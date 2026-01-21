@@ -29,6 +29,40 @@ Culture Compass revolutionizes travel planning by gamifying cultural discovery. 
 
 ---
 
+## 🎯 Project Scope
+
+This project demonstrates a full-stack approach to modern web application development, encompassing both frontend development and DevOps best practices:
+
+### 📁 Repository Structure and Documentation
+- **Organized Codebase**: Clean separation of concerns with logical file structure
+- **Comprehensive Documentation**: Detailed README with setup, usage, and contribution guidelines
+- **Code Comments**: Well-documented JavaScript functions and CSS classes
+- **API Documentation**: Clear data structure definitions and usage examples
+- **Development Guidelines**: Coding standards and best practices documentation
+
+### 🏗️ Infrastructure as Code (Terraform)
+- **Cloud Infrastructure**: Automated provisioning of cloud resources using Terraform
+- **Environment Management**: Separate configurations for development, staging, and production
+- **Resource Optimization**: Cost-effective infrastructure scaling and management
+- **State Management**: Secure Terraform state handling and version control
+- **Multi-cloud Support**: Flexible deployment across different cloud providers
+
+### 🔄 CI/CD Automation
+- **Automated Testing**: Unit tests, integration tests, and end-to-end testing pipelines
+- **Build Automation**: Automated build processes with optimization and minification
+- **Deployment Pipeline**: Seamless deployment to multiple environments
+- **Quality Gates**: Code quality checks, security scans, and performance testing
+- **Rollback Strategies**: Safe deployment practices with automatic rollback capabilities
+
+### 🔒 Security and Monitoring Considerations
+- **Security Best Practices**: HTTPS enforcement, CSP headers, and secure coding practices
+- **Vulnerability Scanning**: Automated security vulnerability detection and remediation
+- **Performance Monitoring**: Real-time application performance and user experience tracking
+- **Error Tracking**: Comprehensive error logging and alerting systems
+- **Compliance**: GDPR compliance, accessibility standards (WCAG), and privacy by design
+
+---
+
 ## ✨ Features
 
 ### 📱 Complete Mobile Experience
