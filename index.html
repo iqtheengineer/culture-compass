@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culture Compass - Collect the World</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Onboarding Screen -->
+    <div id="onboardingScreen" class="screen active">
+        <div class="onboarding-content">
+            <div class="logo-large">🧭</div>
+            <h1 class="app-title">Culture Compass</h1>
+            <p class="app-tagline">Collect the World.</p>
+            <button class="btn-primary" onclick="showLocationPrompt()">Start Your Journey</button>
+        </div>
+    </div>
+
+    <!-- Location Prompt -->
+    <div id="locationScreen" class="screen">
+        <div class="location-content">
+            <h2>Where are you?</h2>
+            <p>We'll unlock your first culture card!</p>
+            <button class="btn-primary" onclick="detectLocation()">📍 Use My Location</button>
+            <div class="divider">or</div>
+            <select id="manualLocation" class="location-select">
+                <option value="">Select your country...</option>
+            </select>
+            <button class="btn-secondary" onclick="showProfileSetup()">Continue</button>
+        </div>
+    </div>
+
+    <!-- Profile Setup -->
+    <div id="profileScreen" class="screen">
+        <div class="profile-content">
+            <h2>Create Your Profile</h2>
+            <input type="text" id="userName" class="input-field" placeholder="Your name">
+            <div class="avatar-selector">
+                <div class="avatar-option" data-avatar="🧳" onclick="selectAvatar('🧳')">🧳</div>
+                <div class="avatar-option" data-avatar="✈️" onclick="selectAvatar('✈️')">✈️</div>
+                <div class="avatar-option" data-avatar="🗺️" onclick="selectAvatar('🗺️')">🗺️</div>
+                <div class="avatar-option" data-avatar="🎒" onclick="selectAvatar('🎒')">🎒</div>
+                <div class="avatar-option" data-avatar="🌍" onclick="selectAvatar('🌍')">🌍</div>
+            </div>
+            <p class="section-label">What interests you?</p>
+            <div class="interest-tags">
+                <button class="tag-btn" data-interest="Culture" onclick="toggleInterest(this)">🎭 Culture</button>
+                <button class="tag-btn" data-interest="Food" onclick="toggleInterest(this)">🍽️ Food</button>
+                <button class="tag-btn" data-interest="Nature" onclick="toggleInterest(this)">🏞️ Nature</button>
+                <button class="tag-btn" data-interest="History" onclick="toggleInterest(this)">🏛️ History</button>
+            </div>
+            <button class="btn-primary" onclick="completeOnboarding()">Start Collecting</button>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="appContainer" class="screen">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="user-info">
+                <span id="userAvatar" class="user-avatar">🧳</span>
+                <span id="userNameDisplay" class="user-name">Traveler</span>
+            </div>
+            <div class="collection-progress">
+                <span id="progressCount">0/20</span>
+            </div>
+        </div>
+
+        <!-- Map View -->
+        <div id="mapView" class="view-content active">
+            <div class="map-container">
+                <div class="world-map" id="worldMap"></div>
+            </div>
+            <div class="quick-stats">
+                <div class="stat-card">
+                    <span class="stat-icon">🥉</span>
+                    <span class="stat-value" id="bronzeCount">0</span>
+                    <span class="stat-label">Saved</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">🥈</span>
+                    <span class="stat-value" id="silverCount">0</span>
+                    <span class="stat-label">Downloaded</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">🥇</span>
+                    <span class="stat-value" id="goldCount">0</span>
+                    <span class="stat-label">Visited</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Collection View -->
+        <div id="collectionView" class="view-content">
+            <div class="collection-header">
+                <h2>My Collection</h2>
+                <div class="filter-chips">
+                    <button class="chip active" onclick="filterCollection('all')">All</button>
+                    <button class="chip" onclick="filterCollection('bronze')">🥉 Saved</button>
+                    <button class="chip" onclick="filterCollection('silver')">🥈 Downloaded</button>
+                    <button class="chip" onclick="filterCollection('gold')">🥇 Visited</button>
+                </div>
+            </div>
+            <div id="collectionGrid" class="card-binder"></div>
+        </div>
+
+        <!-- Explore View -->
+        <div id="exploreView" class="view-content">
+            <div class="explore-header">
+                <input type="text" id="exploreSearch" class="search-input" placeholder="🔍 Search by country name">
+                <div class="region-filters">
+                    <button class="region-chip active" onclick="filterRegion('all')">All</button>
+                    <button class="region-chip" onclick="filterRegion('Asia')">Asia</button>
+                    <button class="region-chip" onclick="filterRegion('Europe')">Europe</button>
+                    <button class="region-chip" onclick="filterRegion('Africa')">Africa</button>
+                    <button class="region-chip" onclick="filterRegion('Americas')">Americas</button>
+                    <button class="region-chip" onclick="filterRegion('Oceania')">Oceania</button>
+                </div>
+            </div>
+            <div id="exploreGrid" class="explore-grid"></div>
+        </div>
+
+        <!-- Profile View -->
+        <div id="profileView" class="view-content">
+            <div class="profile-header">
+                <div class="profile-avatar-large" id="profileAvatarLarge">🧳</div>
+                <h2 id="profileNameLarge">Traveler</h2>
+                <p class="profile-stat">🌍 <span id="percentageCollected">0%</span> of world collected</p>
+            </div>
+            <div class="profile-sections">
+                <div class="profile-section">
+                    <h3>📊 Your Stats</h3>
+                    <div class="stats-list">
+                        <div class="stat-row">
+                            <span>Countries Visited</span>
+                            <span id="visitedCount">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Cards Downloaded</span>
+                            <span id="downloadedCount">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Cards Saved</span>
+                            <span id="savedCount">0</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-section">
+                    <h3>⚙️ Settings</h3>
+                    <div class="settings-list">
+                        <button class="setting-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+                        <button class="setting-btn" onclick="showOfflineManager()">📥 Manage Offline Cards</button>
+                        <button class="setting-btn" onclick="resetApp()">🔄 Reset Progress</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-btn active" onclick="switchView('map')">
+                <span class="nav-icon">🌍</span>
+                <span class="nav-label">Map</span>
+            </button>
+            <button class="nav-btn" onclick="switchView('collection')">
+                <span class="nav-icon">🃏</span>
+                <span class="nav-label">Collection</span>
+            </button>
+            <button class="nav-btn" onclick="switchView('explore')">
+                <span class="nav-icon">🧭</span>
+                <span class="nav-label">Explore</span>
+            </button>
+            <button class="nav-btn" onclick="switchView('profile')">
+                <span class="nav-icon">👤</span>
+                <span class="nav-label">Profile</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Card Detail Modal -->
+    <div id="cardModal" class="card-modal">
+        <div class="card-modal-content">
+            <button class="modal-close" onclick="closeCardModal()">✕</button>
+            <div id="cardFront" class="card-face active">
+                <div id="cardFrontContent"></div>
+                <button class="flip-btn" onclick="flipCard()">View Details →</button>
+            </div>
+            <div id="cardBack" class="card-face">
+                <div id="cardBackContent"></div>
+                <button class="flip-btn" onclick="flipCard()">← Back</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
