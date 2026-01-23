@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: ["main"]
 
+permissions:
+  contents: read
+  pull-requests: read
+
 jobs:
   quality-and-security:
     runs-on: ubuntu-latest
@@ -14,11 +18,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Basic HTML sanity check (fails if index.html is missing)
       - name: Check required files
         run: |
           test -f index.html
 
-      # Secret scanning (stable, widely used)
       - name: Secret scanning
         uses: gitleaks/gitleaks-action@v2
