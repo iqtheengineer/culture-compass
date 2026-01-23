@@ -1,11 +1,45 @@
-name: CI Pipeline
+name: CI – Tests and Security Scans
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
-  build:
+  test-and-security:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      # 1. Checkout repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Setup Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Run application tests (if present)
+      - name: Run tests
+        run: npm test --if-present
+
+      # 5. Dependency vulnerability scan
+      - name: Run dependency security audit
+        run: npm audit --audit-level=high
+
+      # 6. Initialize CodeQL security analysis
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript
+
+      # 7. Perform CodeQL analysis
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
