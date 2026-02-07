@@ -8,11 +8,18 @@
 </head>
 <body>
     <!-- Onboarding Screen -->
-    <div id="onboardingScreen" class="screen active">
+    <div id="onboardingScreen" class="screen">
         <div class="onboarding-content">
             <div class="logo-large">🧭</div>
             <h1 class="app-title">Culture Compass</h1>
-            <p class="app-tagline">Collect the World.</p>
+            
+            <!-- Rotating Taglines -->
+            <div class="rotating-taglines">
+                <p class="tagline-text active">Learn the culture before you take a trip.</p>
+                <p class="tagline-text">Collect memories, not mistakes.</p>
+                <p class="tagline-text">Respect the places you visit.</p>
+            </div>
+            
             <button class="btn-primary" onclick="showLocationPrompt()">Start Your Journey</button>
         </div>
     </div>
@@ -55,7 +62,7 @@
     </div>
 
     <!-- Main App Container -->
-    <div id="appContainer" class="screen">
+    <div id="appContainer" class="screen active">
         <!-- Top Bar -->
         <div class="top-bar">
             <div class="user-info">
@@ -68,7 +75,7 @@
         </div>
 
         <!-- Map View -->
-        <div id="mapView" class="view-content active">
+        <div id="mapView" class="view-content">
             <div class="map-container">
                 <div class="world-map" id="worldMap"></div>
             </div>
@@ -106,7 +113,7 @@
         </div>
 
         <!-- Explore View -->
-        <div id="exploreView" class="view-content">
+        <div id="exploreView" class="view-content active">
             <div class="explore-header">
                 <input type="text" id="exploreSearch" class="search-input" placeholder="🔍 Search by country name">
                 <div class="region-filters">
@@ -159,7 +166,7 @@
 
         <!-- Bottom Navigation -->
         <nav class="bottom-nav">
-            <button class="nav-btn active" onclick="switchView('map')">
+            <button class="nav-btn" onclick="switchView('map')">
                 <span class="nav-icon">🌍</span>
                 <span class="nav-label">Map</span>
             </button>
@@ -167,7 +174,7 @@
                 <span class="nav-icon">🃏</span>
                 <span class="nav-label">Collection</span>
             </button>
-            <button class="nav-btn" onclick="switchView('explore')">
+            <button class="nav-btn active" onclick="switchView('explore')">
                 <span class="nav-icon">🧭</span>
                 <span class="nav-label">Explore</span>
             </button>

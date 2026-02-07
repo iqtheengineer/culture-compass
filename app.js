@@ -524,17 +524,99 @@ let selectedInterests = userProfile.interests;
 
 // Initialize App
 function init() {
-    // Check if onboarding is complete
-    const onboardingComplete = localStorage.getItem('onboardingComplete');
+    // Skip onboarding and go directly to explore page
+    showApp();
+    switchView('explore');
     
-    if (onboardingComplete) {
-        showApp();
-    } else {
-        showScreen('onboardingScreen');
+    // Set default user profile
+    if (!userProfile.name) {
+        userProfile.name = 'Explorer';
+        userProfile.avatar = '🧭';
+        userProfile.interests = ['Culture', 'Food', 'Nature', 'History'];
+        saveData();
     }
     
-    // Populate location dropdown
+    // Populate location dropdown (if needed later)
     populateLocationDropdown();
+}
+
+// Enhanced Welcome Experience
+function initializeWelcomeExperience() {
+    startWelcomeAnimations();
+    startTaglineRotation();
+    addInteractiveElements();
+}
+
+function startWelcomeAnimations() {
+    setTimeout(() => {
+        const logo = document.querySelector('.logo-large');
+        if (logo) logo.style.animation = 'bounceIn 1.5s ease-out';
+    }, 300);
+    
+    setTimeout(() => {
+        const title = document.querySelector('.app-title');
+        if (title) title.style.animation = 'slideInUp 1s ease-out';
+    }, 800);
+    
+    setTimeout(() => {
+        const tagline = document.querySelector('.app-tagline');
+        if (tagline) tagline.style.animation = 'fadeInUp 1s ease-out';
+    }, 1200);
+    
+    setTimeout(() => {
+        const button = document.querySelector('.btn-primary');
+        if (button) {
+            button.style.animation = 'pulse 2s infinite';
+            button.classList.add('ready-to-click');
+        }
+    }, 2000);
+}
+
+// Enhanced tagline rotation
+let taglineIndex = 0;
+let taglineInterval;
+
+function startTaglineRotation() {
+    const taglines = document.querySelectorAll('.tagline-text');
+    if (taglines.length === 0) return;
+    
+    setTimeout(() => {
+        taglineInterval = setInterval(() => {
+            // Add exit animation to current tagline
+            taglines[taglineIndex].classList.add('exit');
+            
+            setTimeout(() => {
+                // Remove current tagline
+                taglines[taglineIndex].classList.remove('active', 'exit');
+                
+                // Move to next tagline
+                taglineIndex = (taglineIndex + 1) % taglines.length;
+                
+                // Show next tagline with entrance animation
+                taglines[taglineIndex].classList.add('active');
+            }, 400); // Half of the transition time
+            
+        }, 4000);
+    }, 3000);
+}
+
+function stopTaglineRotation() {
+    if (taglineInterval) {
+        clearInterval(taglineInterval);
+    }
+}
+
+function addInteractiveElements() {
+    // Add hover effects to preview cards
+    setTimeout(() => {
+        const previewCards = document.querySelectorAll('.preview-card');
+        previewCards.forEach((card, index) => {
+            setTimeout(() => {
+                card.style.animation = 'slideInUp 0.8s ease-out';
+                card.classList.add('interactive');
+            }, index * 200);
+        });
+    }, 2500);
 }
 
 // Screen Management
@@ -547,6 +629,7 @@ function showScreen(screenId) {
 
 // Onboarding Flow
 function showLocationPrompt() {
+    stopTaglineRotation();
     showScreen('locationScreen');
 }
 
@@ -689,13 +772,30 @@ function switchView(view) {
     document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.classList.remove('active');
     });
-    event.target.closest('.nav-btn').classList.add('active');
+    
+    // Find and activate the correct nav button
+    const navButtons = document.querySelectorAll('.nav-btn');
+    navButtons.forEach(btn => {
+        const onclick = btn.getAttribute('onclick');
+        if (onclick && onclick.includes(`'${view}'`)) {
+            btn.classList.add('active');
+        }
+    });
     
     // Update view content
     document.querySelectorAll('.view-content').forEach(content => {
         content.classList.remove('active');
     });
     document.getElementById(`${view}View`).classList.add('active');
+    
+    // Load content for the view
+    if (view === 'explore') {
+        renderExploreGrid();
+    } else if (view === 'collection') {
+        renderCollectionGrid();
+    } else if (view === 'map') {
+        renderWorldMap();
+    }
 }
 
 // Explore View
@@ -924,10 +1024,20 @@ function resetApp() {
     }
 }
 
-// Utilities
-function saveData() {
-    localStorage.setItem('userProfile', JSON.stringify(userProfile));
-    localStorage.setItem('cardStatus', JSON.stringify(cardStatus));
+// Enhanced Notifications
+function showCelebrationNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'celebration-notification';
+    notification.innerHTML = `
+        <div style="font-size: 2rem; margin-bottom: 10px;">🎉</div>
+        <div>${message}</div>
+    `;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'fadeOut 0.5s ease-in-out';
+        setTimeout(() => notification.remove(), 500);
+    }, 3000);
 }
 
 function showNotification(message) {
@@ -944,15 +1054,169 @@ function showNotification(message) {
         font-weight: 700;
         box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         z-index: 10000;
-        animation: slideUp 0.3s ease;
+        animation: slideInUp 0.5s ease-out;
     `;
     notification.textContent = message;
     document.body.appendChild(notification);
     
     setTimeout(() => {
-        notification.style.animation = 'slideDown 0.3s ease';
+        notification.style.animation = 'slideInUp 0.3s ease-in-out reverse';
         setTimeout(() => notification.remove(), 300);
     }, 2500);
+}
+
+// Enhanced Avatar Selection
+function selectAvatar(avatar) {
+    selectedAvatar = avatar;
+    document.querySelectorAll('.avatar-option').forEach(opt => {
+        opt.classList.remove('selected');
+    });
+    event.target.classList.add('selected');
+    
+    // Add selection feedback
+    event.target.style.animation = 'bounce 0.6s ease-in-out';
+    showMiniNotification('Avatar selected! 👍');
+}
+
+function showMiniNotification(message) {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(76, 175, 80, 0.9);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        z-index: 10000;
+        animation: slideInRight 0.3s ease-out;
+    `;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'slideInRight 0.3s ease-in-out reverse';
+        setTimeout(() => notification.remove(), 300);
+    }, 1500);
+}
+
+// Enhanced Interest Selection
+function toggleInterest(btn) {
+    const interest = btn.dataset.interest;
+    const wasSelected = btn.classList.contains('selected');
+    
+    btn.classList.toggle('selected');
+    
+    if (selectedInterests.includes(interest)) {
+        selectedInterests = selectedInterests.filter(i => i !== interest);
+    } else {
+        selectedInterests.push(interest);
+        // Add celebration effect for new selection
+        btn.style.animation = 'glow 1s ease-in-out';
+        setTimeout(() => {
+            btn.style.animation = '';
+        }, 1000);
+    }
+    
+    updateInterestsFeedback();
+    
+    // Unlock cards based on interests
+    if (!wasSelected && selectedInterests.length > 0) {
+        unlockCardsBasedOnInterests();
+    }
+}
+
+function unlockCardsBasedOnInterests() {
+    // Unlock 2-3 cards based on selected interests
+    const interestCountryMap = {
+        'Culture': ['Japan', 'India', 'Morocco'],
+        'Food': ['Italy', 'France', 'Thailand'],
+        'Nature': ['New Zealand', 'Norway', 'Iceland'],
+        'History': ['Egypt', 'Greece', 'Peru']
+    };
+    
+    selectedInterests.forEach(interest => {
+        const relevantCountries = interestCountryMap[interest] || [];
+        relevantCountries.slice(0, 1).forEach(countryName => {
+            if (!cardStatus[countryName]) {
+                cardStatus[countryName] = 'bronze';
+                showMiniNotification(`🎴 ${countryName} card unlocked!`);
+            }
+        });
+    });
+    
+    saveData();
+}
+
+function updateInterestsFeedback() {
+    const feedbackContainer = document.querySelector('.interests-feedback');
+    const noInterestsMessage = document.querySelector('.no-interests-message');
+    
+    if (!noInterestsMessage) return;
+    
+    if (selectedInterests.length === 0) {
+        noInterestsMessage.style.display = 'block';
+        noInterestsMessage.textContent = 'Select your interests above to start unlocking culture cards.';
+        noInterestsMessage.style.color = 'rgba(255, 255, 255, 0.7)';
+    } else {
+        noInterestsMessage.style.display = 'block';
+        noInterestsMessage.innerHTML = `
+            <span style="color: #4caf50;">✅</span> 
+            Great! You've selected ${selectedInterests.length} interest${selectedInterests.length > 1 ? 's' : ''}. 
+            <br><small>Cards are being unlocked based on your preferences!</small>
+        `;
+        noInterestsMessage.style.color = 'rgba(255, 255, 255, 0.9)';
+    }
+}
+
+// Enhanced Onboarding Completion
+function completeOnboarding() {
+    const name = document.getElementById('userName').value || 'Traveler';
+    
+    if (selectedInterests.length === 0) {
+        showNotification('Please select at least one interest to continue! 🎯');
+        document.querySelector('.interest-tags').style.animation = 'shake 0.5s ease-in-out';
+        return;
+    }
+    
+    userProfile.name = name;
+    userProfile.avatar = selectedAvatar;
+    userProfile.interests = selectedInterests;
+    
+    localStorage.setItem('onboardingComplete', 'true');
+    saveData();
+    
+    // Show completion celebration
+    showCelebrationNotification(`🎉 Welcome ${name}! Your journey begins now!`);
+    
+    setTimeout(() => {
+        showApp();
+    }, 2000);
+}
+
+// Preview Card Interactions
+function previewCardClick(countryName) {
+    // Add click effect
+    event.target.style.animation = 'pulse 0.5s ease-in-out';
+    
+    // Show teaser notification
+    showMiniNotification(`🎴 ${countryName} looks interesting! Complete setup to unlock it.`);
+    
+    // Highlight the start button
+    setTimeout(() => {
+        const startButton = document.querySelector('.btn-primary');
+        if (startButton) {
+            startButton.style.animation = 'glow 2s ease-in-out 3';
+        }
+    }, 1000);
+}
+
+// Utilities
+function saveData() {
+    localStorage.setItem('userProfile', JSON.stringify(userProfile));
+    localStorage.setItem('cardStatus', JSON.stringify(cardStatus));
 }
 
 // Start App
