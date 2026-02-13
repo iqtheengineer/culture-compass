@@ -114,8 +114,24 @@
 
         <!-- Explore View -->
         <div id="exploreView" class="view-content active">
-            <div class="explore-header">
-                <input type="text" id="exploreSearch" class="search-input" placeholder="🔍 Search by country name">
+            <!-- Hero Header Section -->
+            <div class="hero-header">
+                <div class="hero-content">
+                    <div class="logo-hero">🧭</div>
+                    <h1 class="hero-title">Culture Compass</h1>
+                    <p class="hero-slogan">Don't Just Visit. Belong.</p>
+                    <p class="hero-directions">
+                        👇 Browse countries below • Click any card to learn customs, food, and travel tips • 
+                        Save favorites to your collection
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Search and Filters -->
+            <div class="explore-controls">
+                <div class="search-container">
+                    <input type="text" id="exploreSearch" class="search-input" placeholder="🔍 Search countries...">
+                </div>
                 <div class="region-filters">
                     <button class="region-chip active" onclick="filterRegion('all')">All</button>
                     <button class="region-chip" onclick="filterRegion('Asia')">Asia</button>
@@ -125,6 +141,8 @@
                     <button class="region-chip" onclick="filterRegion('Oceania')">Oceania</button>
                 </div>
             </div>
+            
+            <!-- Countries Grid -->
             <div id="exploreGrid" class="explore-grid"></div>
         </div>
 
