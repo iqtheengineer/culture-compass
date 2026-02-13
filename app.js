@@ -7,11 +7,50 @@ const countries = [
         region: "Asia",
         language: "Japanese",
         currency: "Japanese Yen (¥)",
-        dos: ["Bow when greeting", "Remove shoes indoors", "Be punctual", "Speak quietly in public"],
-        donts: ["Don't tip", "Don't blow your nose in public", "Don't wear shoes inside", "Don't stick chopsticks upright in rice"],
+        riskLevel: "🔴 High Nuance",
+        briefingTime: "5 Minutes",
+        culturalSnapshot: {
+            communicationStyle: "Indirect, high-context",
+            punctuality: "Extremely important",
+            personalSpace: "Moderate but orderly",
+            collectivism: "Strong group harmony culture",
+            englishProficiency: "Moderate in cities, limited elsewhere"
+        },
+        dos: ["Be on time — or early. Even 5 minutes late is noticeable", "Bow slightly when greeting (especially in formal settings)", "Keep your voice low in public spaces", "Carry cash — many small places don't accept cards", "Follow queue lines strictly. Order matters"],
+        donts: ["Don't take loud phone calls on trains", "Don't tip — it can cause confusion", "Don't stick chopsticks upright in rice (funeral symbolism)", "Don't blow your nose loudly in public", "Don't touch people casually (low physical contact culture)"],
+        socialEtiquette: {
+            dining: ["Slurping noodles = normal", "Say 'Itadakimasu' before eating (optional but appreciated)", "Don't pass food chopstick-to-chopstick"],
+            business: ["Exchange business cards respectfully (use two hands)", "Read the card before putting it away"],
+            publicBehavior: ["Silence on public transport", "No eating while walking in most cities"]
+        },
+        moneyTips: {
+            tipping: "Not expected",
+            cardUsage: "Increasing, but cash still common",
+            transitCards: "Suica / Pasmo recommended"
+        },
         food: "Sushi, Ramen, Tempura",
-        apps: ["Google Translate", "Hyperdia", "Tabelog", "Suica", "PayPay", "LINE Pay", "Uber Eats", "Demae-can"],
-        transport: "Shinkansen (bullet train), JR Pass, Metro, Taxis",
+        apps: ["LINE (Messaging)", "Google Maps", "Japan Transit Planner", "Tabelog (Food Reviews)"],
+        transport: "Public transport: World-class. Trains: Primary mode. Taxis: Expensive but safe. Ride-sharing: Limited",
+        scenarios: [
+            {
+                situation: "You're on a train. Your phone rings.",
+                options: ["Take the call quietly", "Ignore it", "Step off at next stop"],
+                correct: 2,
+                explanation: "Taking calls on trains is considered disruptive. Step off at the next stop if urgent."
+            },
+            {
+                situation: "You're invited to someone's home.",
+                options: ["Wear shoes inside", "Bring a small gift", "Arrive 20 minutes late"],
+                correct: 1,
+                explanation: "Always bring a small gift (omiyage). Remove shoes at entrance. Be punctual."
+            },
+            {
+                situation: "You finish dinner at a restaurant.",
+                options: ["Leave 15% tip", "Leave exact change", "Leave extra cash on table"],
+                correct: 1,
+                explanation: "Tipping is not customary in Japan and can cause confusion."
+            }
+        ],
         info: "Punctuality is crucial. Respect quiet zones on trains. Cash is still widely used."
     },
     {
@@ -63,12 +102,51 @@ const countries = [
         region: "Europe",
         language: "German",
         currency: "Euro (€)",
-        dos: ["Be punctual", "Follow rules strictly", "Separate recycling", "Shake hands firmly"],
-        donts: ["Don't be late", "Don't jaywalk", "Don't be loud in public", "Don't expect shops open on Sundays"],
-        food: "Bratwurst, Schnitzel, Pretzels",
-        apps: ["DB Navigator", "Google Maps", "Lieferando", "FlixBus", "PayPal", "Klarna", "Wolt", "Uber Eats"],
-        transport: "ICE trains, U-Bahn, S-Bahn, Trams, FlixBus",
-        info: "Punctuality is critical. Cash still common. Quiet Sundays (shops closed)."
+        riskLevel: "🟢 Low Risk",
+        briefingTime: "3 Minutes",
+        culturalSnapshot: {
+            communicationStyle: "Direct, straightforward",
+            punctuality: "Absolutely critical",
+            personalSpace: "High value on personal space",
+            collectivism: "Individualistic with strong rule-following",
+            englishProficiency: "Very good, especially in cities"
+        },
+        dos: ["Be exactly on time (5 min early is ideal)", "Follow all rules and regulations strictly", "Separate recycling properly (very important)", "Shake hands firmly when greeting", "Be direct and honest in communication"],
+        donts: ["Don't be late — even 2 minutes matters", "Don't jaywalk (you'll get stares or fines)", "Don't be loud in public spaces", "Don't expect shops open on Sundays", "Don't make jokes about WWII"],
+        socialEtiquette: {
+            dining: ["Wait for 'Guten Appetit' before eating", "Keep hands visible on table (not in lap)", "Finish your plate — wasting food is frowned upon"],
+            business: ["Punctuality is non-negotiable", "Use titles (Herr/Frau + last name)", "Meetings are formal and structured"],
+            publicBehavior: ["Quiet Sundays are sacred (no loud activities)", "Respect bike lanes — don't walk in them", "Queue properly and wait your turn"]
+        },
+        moneyTips: {
+            tipping: "Round up or 5-10% (say total when paying)",
+            cardUsage: "Cash still very common, especially small shops",
+            transitCards: "DB Navigator app for trains, local transit cards"
+        },
+        food: "Bratwurst, Schnitzel, Pretzels, Sauerkraut",
+        apps: ["DB Navigator (Trains)", "Google Maps", "Lieferando (Food)", "PayPal"],
+        transport: "ICE trains: Fast and punctual. U-Bahn/S-Bahn: Efficient metro. Trams: Common in cities. FlixBus: Cheap intercity travel",
+        scenarios: [
+            {
+                situation: "You're 5 minutes late to a meeting.",
+                options: ["Arrive casually", "Call ahead and apologize", "Don't mention it"],
+                correct: 1,
+                explanation: "Punctuality is sacred in Germany. Always call ahead if you'll be even slightly late and apologize."
+            },
+            {
+                situation: "It's Sunday and you want to mow your lawn.",
+                options: ["Go ahead, it's your property", "Wait until Monday", "Do it quietly"],
+                correct: 1,
+                explanation: "Sundays are 'Ruhetag' (quiet day). No loud activities like lawn mowing are allowed. Wait until Monday."
+            },
+            {
+                situation: "The pedestrian light is red but no cars are coming.",
+                options: ["Cross the street", "Wait for green light", "Look around first"],
+                correct: 1,
+                explanation: "Germans wait for the green light even with no traffic. Jaywalking is frowned upon and can result in fines."
+            }
+        ],
+        info: "Punctuality is critical. Cash still common. Quiet Sundays (shops closed). Rules are taken very seriously."
     },
     {
         name: "United Kingdom",
@@ -101,13 +179,53 @@ const countries = [
         flag: "🇹🇭",
         image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=400&h=300&fit=crop",
         region: "Asia",
+        language: "Thai",
         currency: "Thai Baht (฿)",
-        dos: ["Wai greeting (hands together)", "Remove shoes at temples", "Dress modestly at temples", "Smile often"],
-        donts: ["Don't touch anyone's head", "Don't point feet at people", "Don't disrespect Buddha images", "Don't touch monks"],
-        food: "Pad Thai, Tom Yum, Green Curry",
-        apps: ["Grab", "Google Translate", "XE Currency", "Agoda", "PromptPay", "TrueMoney Wallet", "foodpanda", "LINE MAN"],
-        transport: "Tuk-tuks, BTS Skytrain, MRT, Songthaews, Grab",
-        info: "Dress modestly at temples. Bargaining is common at markets. Smile often!"
+        riskLevel: "🟡 Moderate",
+        briefingTime: "4 Minutes",
+        culturalSnapshot: {
+            communicationStyle: "Indirect, non-confrontational",
+            punctuality: "Flexible, 'Thai time' is common",
+            personalSpace: "Moderate, friendly culture",
+            collectivism: "Strong respect for hierarchy",
+            englishProficiency: "Good in tourist areas, limited elsewhere"
+        },
+        dos: ["Wai greeting (hands together) when appropriate", "Remove shoes before entering temples and homes", "Dress modestly at temples (cover shoulders and knees)", "Smile often — it's the 'Land of Smiles'", "Show respect to the Royal Family"],
+        donts: ["Don't touch anyone's head (most sacred body part)", "Don't point feet at people or Buddha images", "Don't disrespect Buddha images or monks", "Don't touch monks if you're a woman", "Don't raise your voice or show anger publicly"],
+        socialEtiquette: {
+            dining: ["Eat with fork and spoon (fork pushes food onto spoon)", "Sharing dishes is common", "Don't finish all food (implies host didn't provide enough)"],
+            business: ["Business cards exchanged with both hands", "Hierarchy is very important", "Avoid confrontation or saying 'no' directly"],
+            publicBehavior: ["Public displays of affection are frowned upon", "Feet are considered dirty, head is sacred", "Always be calm and smiling"]
+        },
+        moneyTips: {
+            tipping: "Not required but appreciated (20-50 baht)",
+            cardUsage: "Cash preferred, cards accepted in cities",
+            transitCards: "Rabbit Card for BTS, stored value cards"
+        },
+        food: "Pad Thai, Tom Yum, Green Curry, Mango Sticky Rice",
+        apps: ["Grab (Transport & Food)", "Google Translate", "Agoda (Hotels)", "PromptPay (Payments)"],
+        transport: "Tuk-tuks: Negotiate price first. BTS Skytrain & MRT: Modern and efficient. Grab: Reliable ride-hailing. Songthaews: Shared pickup trucks",
+        scenarios: [
+            {
+                situation: "A monk sits next to you on the bus.",
+                options: ["Offer your seat", "Stay seated and smile", "Move to another seat"],
+                correct: 0,
+                explanation: "Always offer your seat to monks as a sign of respect. They hold high status in Thai society."
+            },
+            {
+                situation: "You're entering a Thai home.",
+                options: ["Keep shoes on", "Remove shoes at the door", "Ask the host"],
+                correct: 1,
+                explanation: "Always remove shoes before entering homes and temples. It's a fundamental sign of respect."
+            },
+            {
+                situation: "Someone criticizes the Thai Royal Family.",
+                options: ["Join the conversation", "Stay completely silent", "Change the subject politely"],
+                correct: 2,
+                explanation: "Criticizing the monarchy is illegal in Thailand (lèse-majesté law). Politely change the subject."
+            }
+        ],
+        info: "Dress modestly at temples. Bargaining is common at markets. Smile often! The monarchy is deeply revered."
     },
     {
         name: "South Korea",
@@ -140,39 +258,212 @@ const countries = [
         flag: "🇻🇳",
         image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=400&h=300&fit=crop",
         region: "Asia",
+        language: "Vietnamese",
         currency: "Vietnamese Dong (₫)",
-        dos: ["Remove shoes indoors", "Bargain at markets", "Cross streets slowly", "Try street food"],
-        donts: ["Don't touch people's heads", "Don't point feet at people", "Don't disrespect Ho Chi Minh", "Don't refuse food"],
-        food: "Pho, Banh Mi, Spring Rolls",
-        apps: ["Grab", "Google Maps", "Google Translate", "Zalo", "MoMo", "ZaloPay", "Baemin", "GrabFood"],
-        transport: "Motorbikes, Grab, Cyclos, Buses, Trains",
-        info: "Cross streets slowly and steadily. Street food is incredible. Cash preferred."
+        riskLevel: "🟡 Moderate",
+        briefingTime: "4 Minutes",
+        culturalSnapshot: {
+            communicationStyle: "Indirect, polite, non-confrontational",
+            punctuality: "Flexible, relaxed attitude",
+            personalSpace: "Low, crowded and bustling culture",
+            collectivism: "Strong family and community bonds",
+            englishProficiency: "Growing in cities, limited in rural areas"
+        },
+        dos: ["Remove shoes when entering homes and some restaurants", "Bargain at markets (expected and fun)", "Cross streets slowly and steadily (don't stop)", "Try street food — it's safe and delicious", "Learn basic Vietnamese phrases"],
+        donts: ["Don't touch people's heads", "Don't point feet at people or altars", "Don't disrespect Ho Chi Minh or the flag", "Don't refuse food or drink offers", "Don't show anger or raise your voice"],
+        socialEtiquette: {
+            dining: ["Chopsticks and spoon are standard", "Slurping pho is normal", "Sharing dishes family-style is common"],
+            business: ["Business cards with both hands", "Respect for age and hierarchy", "Building relationships takes time"],
+            publicBehavior: ["Motorbikes dominate — cross streets carefully", "Haggling is expected at markets", "Dress modestly at temples"]
+        },
+        moneyTips: {
+            tipping: "Not expected but appreciated (20,000-50,000 VND)",
+            cardUsage: "Cash preferred, cards in hotels/malls",
+            transitCards: "Cash for most transport, Grab for convenience"
+        },
+        food: "Pho, Banh Mi, Spring Rolls, Bun Cha, Egg Coffee",
+        apps: ["Grab (Transport & Food)", "Google Maps", "Zalo (Messaging)", "MoMo (Payments)"],
+        transport: "Motorbikes: Everywhere! Grab: Reliable and cheap. Cyclos: Tourist experience. Trains: Scenic routes between cities",
+        scenarios: [
+            {
+                situation: "You need to cross a busy street with no traffic light.",
+                options: ["Wait for a gap", "Walk slowly and steadily", "Run across quickly"],
+                correct: 1,
+                explanation: "Walk slowly and steadily. Motorbikes will flow around you. Stopping or running is dangerous."
+            },
+            {
+                situation: "A vendor quotes 200,000 VND for a souvenir.",
+                options: ["Pay the asking price", "Offer 100,000 VND", "Walk away without buying"],
+                correct: 1,
+                explanation: "Bargaining is expected! Start at 50% of asking price. It's part of the shopping culture."
+            },
+            {
+                situation: "You're invited to someone's home for dinner.",
+                options: ["Bring expensive gifts", "Bring fruit or small gift", "Come empty-handed"],
+                correct: 1,
+                explanation: "Bring a small gift like fruit or sweets. Remove shoes at the door. It shows respect."
+            }
+        ],
+        info: "Cross streets slowly and steadily. Street food is incredible. Cash preferred. Very affordable!"
+    },
+    {
+        name: "Indonesia",
+        flag: "🇮🇩",
+        image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=400&h=300&fit=crop",
+        region: "Asia",
+        language: "Indonesian (Bahasa)",
+        currency: "Indonesian Rupiah (Rp)",
+        riskLevel: "🟡 Moderate",
+        briefingTime: "4 Minutes",
+        culturalSnapshot: {
+            communicationStyle: "Indirect, polite, non-confrontational",
+            punctuality: "Flexible, 'jam karet' (rubber time)",
+            personalSpace: "Moderate, friendly culture",
+            collectivism: "Strong community and religious values",
+            englishProficiency: "Good in tourist areas, limited elsewhere"
+        },
+        dos: ["Remove shoes before entering homes and mosques", "Use right hand for eating and giving", "Dress modestly, especially at temples", "Learn basic Bahasa Indonesia", "Smile and be patient"],
+        donts: ["Don't use left hand for eating or giving", "Don't touch people's heads", "Don't point with your finger (use thumb)", "Don't show anger or raise your voice", "Don't wear shoes in homes or mosques"],
+        socialEtiquette: {
+            dining: ["Eat with right hand or spoon and fork", "Wait for host to invite you to eat", "Finish your plate to show appreciation"],
+            business: ["Building relationships is essential", "Avoid direct confrontation", "Patience is key — decisions take time"],
+            publicBehavior: ["Modest dress, especially in rural areas", "Public displays of affection are frowned upon", "Respect prayer times (5 times daily)"]
+        },
+        moneyTips: {
+            tipping: "Not expected but appreciated (10,000-20,000 Rp)",
+            cardUsage: "Cash preferred, cards in hotels/malls",
+            transitCards: "Cash for most transport, Go-Jek/Grab for convenience"
+        },
+        food: "Nasi Goreng, Satay, Rendang, Gado-Gado, Soto",
+        apps: ["Go-Jek/Grab (Transport & Food)", "Google Maps", "Google Translate", "OVO/GoPay (Payments)"],
+        transport: "Go-Jek/Grab: Motorbike taxis everywhere. Bemos: Shared minivans. Ferries: Island hopping. Trains: Java connections",
+        scenarios: [
+            {
+                situation: "You're offered food with your left hand.",
+                options: ["Accept with left hand", "Accept with right hand", "Refuse the food"],
+                correct: 1,
+                explanation: "Always use right hand for eating, giving, and receiving. Left hand is considered unclean."
+            },
+            {
+                situation: "You're visiting a mosque in Indonesia.",
+                options: ["Wear shorts and tank top", "Cover shoulders, knees, and remove shoes", "Keep shoes on"],
+                correct: 1,
+                explanation: "Dress modestly (cover shoulders and knees), remove shoes, and women should cover their hair."
+            },
+            {
+                situation: "Someone invites you to their home at 7pm.",
+                options: ["Arrive at 7pm sharp", "Arrive at 7:15-7:30pm", "Arrive at 6:45pm"],
+                correct: 1,
+                explanation: "'Jam karet' (rubber time) means flexibility. Arriving 15-30 minutes late is normal and acceptable."
+            }
+        ],
+        info: "Use right hand only. Dress modestly. 'Jam karet' means flexible timing. Smile and be patient!"
     },
     {
         name: "Turkey",
         flag: "🇹🇷",
         image: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=400&h=300&fit=crop",
         region: "Asia",
+        language: "Turkish",
         currency: "Turkish Lira (₺)",
-        dos: ["Remove shoes indoors", "Accept tea offers", "Dress modestly at mosques", "Bargain at bazaars"],
-        donts: ["Don't refuse hospitality", "Don't show affection in public", "Don't disrespect Atatürk", "Don't point with finger"],
-        food: "Kebab, Baklava, Turkish Delight",
-        apps: ["BiTaksi", "Yemeksepeti", "Google Maps", "Moovit", "Papara", "iyzico", "Getir", "Trendyol Yemek"],
-        transport: "Metro, Trams, Dolmuş, Ferries, BiTaksi",
-        info: "Bargain at bazaars. Accept tea offers. Dress modestly at religious sites."
+        riskLevel: "🟡 Moderate",
+        briefingTime: "4 Minutes",
+        culturalSnapshot: {
+            communicationStyle: "Warm, expressive, hospitable",
+            punctuality: "Flexible, especially in social settings",
+            personalSpace: "Moderate, friendly and welcoming",
+            collectivism: "Strong family and community values",
+            englishProficiency: "Good in tourist areas, limited elsewhere"
+        },
+        dos: ["Remove shoes when entering homes and mosques", "Accept tea offers (çay) — refusing is rude", "Dress modestly at mosques (cover shoulders, knees, head for women)", "Bargain at bazaars and markets", "Learn basic Turkish phrases"],
+        donts: ["Don't refuse hospitality or tea", "Don't show public displays of affection", "Don't disrespect Atatürk (founder) or the flag", "Don't point with your finger (use whole hand)", "Don't show the bottom of your feet"],
+        socialEtiquette: {
+            dining: ["Wait for elder to start eating", "Bread is sacred — don't waste it", "Tea is offered constantly — accept it"],
+            business: ["Relationships before business", "Expect tea and conversation first", "Haggling is part of business culture"],
+            publicBehavior: ["Hospitality is extreme — expect invitations", "Respect prayer times", "Conservative dress outside tourist areas"]
+        },
+        moneyTips: {
+            tipping: "5-10% in restaurants, round up for taxis",
+            cardUsage: "Cash preferred in small shops, cards in cities",
+            transitCards: "Istanbulkart for public transport"
+        },
+        food: "Kebab, Baklava, Turkish Delight, Meze, Pide",
+        apps: ["BiTaksi (Transport)", "Yemeksepeti (Food)", "Google Maps", "Getir (Delivery)"],
+        transport: "Metro & Trams: Modern in Istanbul. Dolmuş: Shared minibuses. Ferries: Cross the Bosphorus. BiTaksi: Reliable taxis",
+        scenarios: [
+            {
+                situation: "Someone offers you tea for the third time.",
+                options: ["Refuse politely", "Accept it", "Say you're full"],
+                correct: 1,
+                explanation: "Turkish hospitality is legendary. Always accept tea — refusing repeatedly is considered rude."
+            },
+            {
+                situation: "You're shopping at the Grand Bazaar.",
+                options: ["Pay the first price", "Bargain to 50-60% of asking", "Walk away immediately"],
+                correct: 1,
+                explanation: "Bargaining is expected and fun! Start at 50% of asking price. Vendors expect it."
+            },
+            {
+                situation: "You're entering a mosque.",
+                options: ["Keep shoes on", "Remove shoes and cover appropriately", "Take photos freely"],
+                correct: 1,
+                explanation: "Always remove shoes. Women should cover hair, shoulders, and knees. Respect prayer times."
+            }
+        ],
+        info: "Bargain at bazaars. Accept tea offers. Dress modestly at religious sites. Hospitality is incredible."
     },
     {
         name: "Mexico",
         flag: "🇲🇽",
         image: "https://images.unsplash.com/photo-1518638150340-f706e86654de?w=400&h=300&fit=crop",
         region: "Americas",
+        language: "Spanish",
         currency: "Mexican Peso ($)",
-        dos: ["Greet warmly", "Try street food", "Learn basic Spanish", "Be patient with timing"],
-        donts: ["Don't drink tap water", "Don't be overly punctual", "Don't refuse food offers", "Don't flash valuables"],
-        food: "Tacos, Mole, Tamales",
-        apps: ["Uber", "Google Maps", "iOverlander", "WhatsApp", "Mercado Pago", "OXXO Pay", "Uber Eats", "Rappi"],
-        transport: "Metro, Colectivos, ADO buses, Uber, Taxis",
-        info: "Learn Spanish basics. Tip 10-15%. Street food is amazing and safe in busy areas."
+        riskLevel: "🟡 Moderate",
+        briefingTime: "4 Minutes",
+        culturalSnapshot: {
+            communicationStyle: "Warm, indirect, relationship-focused",
+            punctuality: "Flexible, 'mañana' culture",
+            personalSpace: "Low, warm and friendly",
+            collectivism: "Strong family and community bonds",
+            englishProficiency: "Limited outside tourist areas"
+        },
+        dos: ["Greet warmly with handshake or kiss on cheek", "Try street food from busy stalls", "Learn basic Spanish — it's essential", "Be patient with timing and schedules", "Tip 10-15% at restaurants"],
+        donts: ["Don't drink tap water (bottled only)", "Don't be overly punctual (15-30 min late is normal)", "Don't refuse food offers", "Don't flash expensive items or valuables", "Don't make assumptions about safety — research areas"],
+        socialEtiquette: {
+            dining: ["Lunch is main meal (2-4pm)", "Street food is safe at busy stalls", "Tortillas with every meal"],
+            business: ["Relationships before business", "Expect delays and flexibility", "Formal titles are important"],
+            publicBehavior: ["Friendly and warm culture", "Family is central to life", "Fiestas and celebrations are frequent"]
+        },
+        moneyTips: {
+            tipping: "10-15% at restaurants, 10-20 pesos for services",
+            cardUsage: "Cash preferred, cards in cities",
+            transitCards: "Metro cards in major cities, cash for most"
+        },
+        food: "Tacos, Mole, Tamales, Pozole, Chiles en Nogada",
+        apps: ["Uber (Transport)", "Google Maps", "WhatsApp (Essential)", "Mercado Pago (Payments)"],
+        transport: "Metro: Cheap in cities. Colectivos: Shared vans. ADO buses: Comfortable long-distance. Uber: Safe and reliable",
+        scenarios: [
+            {
+                situation: "You're invited to a party at 8pm.",
+                options: ["Arrive at 8pm", "Arrive at 8:30-9pm", "Arrive at 7:45pm"],
+                correct: 1,
+                explanation: "Mexican time is flexible. Arriving 30-60 minutes late to social events is normal and expected."
+            },
+            {
+                situation: "You're thirsty at a restaurant.",
+                options: ["Order tap water", "Order bottled water", "Drink from the fountain"],
+                correct: 1,
+                explanation: "Never drink tap water in Mexico. Always order bottled water ('agua embotellada')."
+            },
+            {
+                situation: "A street vendor offers you tacos.",
+                options: ["Refuse — it's unsafe", "Try them if the stall is busy", "Only eat at restaurants"],
+                correct: 1,
+                explanation: "Street food is delicious and safe if the stall is busy (high turnover = fresh food)."
+            }
+        ],
+        info: "Learn Spanish basics. Tip 10-15%. Street food is amazing and safe in busy areas. Don't drink tap water."
     },
     {
         name: "Brazil",
@@ -192,13 +483,53 @@ const countries = [
         flag: "🇦🇷",
         image: "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=400&h=300&fit=crop",
         region: "Americas",
+        language: "Spanish",
         currency: "Argentine Peso ($)",
-        dos: ["Greet with kiss on cheek", "Share mate", "Talk about football", "Enjoy late dinners"],
-        donts: ["Don't mention Falklands/Malvinas", "Don't compare to Chile", "Don't be punctual", "Don't refuse mate"],
-        food: "Asado, Empanadas, Dulce de Leche",
-        apps: ["Uber", "Cabify", "Google Maps", "PedidosYa", "Mercado Pago", "Ualá", "Rappi", "Glovo"],
-        transport: "Subte (metro), Colectivos, Uber, Cabify, Trains",
-        info: "Dinner after 9pm. Tipping 10%. Learn tango basics. Bring USD for better rates."
+        riskLevel: "🟡 Moderate",
+        briefingTime: "4 Minutes",
+        culturalSnapshot: {
+            communicationStyle: "Direct, passionate, expressive",
+            punctuality: "Very flexible, late is normal",
+            personalSpace: "Low, warm and physical",
+            collectivism: "Strong social and family bonds",
+            englishProficiency: "Limited outside Buenos Aires"
+        },
+        dos: ["Greet with kiss on right cheek (even men)", "Share mate (traditional tea) when offered", "Talk about football (soccer) passionately", "Enjoy late dinners (10pm or later)", "Learn basic Spanish"],
+        donts: ["Don't mention Falklands/Malvinas conflict", "Don't compare Argentina to Chile or Brazil", "Don't be punctual (30-60 min late is normal)", "Don't refuse mate when offered", "Don't expect early dinners"],
+        socialEtiquette: {
+            dining: ["Dinner starts 9-11pm", "Asado (BBQ) is a social ritual", "Wine flows freely"],
+            business: ["Relationships before business", "Expect long lunches and dinners", "Passion and emotion in discussions"],
+            publicBehavior: ["Football is religion", "Tango is cultural pride", "Porteños (Buenos Aires locals) are proud"]
+        },
+        moneyTips: {
+            tipping: "10% at restaurants",
+            cardUsage: "Cash preferred, bring USD for better rates",
+            transitCards: "SUBE card for public transport"
+        },
+        food: "Asado (BBQ), Empanadas, Dulce de Leche, Milanesa",
+        apps: ["Uber/Cabify (Transport)", "Google Maps", "Mercado Pago (Payments)", "PedidosYa (Food)"],
+        transport: "Subte (metro): Cheap but old. Colectivos (buses): Extensive network. Uber/Cabify: Reliable. Trains: Suburban routes",
+        scenarios: [
+            {
+                situation: "Someone offers you mate.",
+                options: ["Refuse politely", "Accept and drink it all", "Take a sip and pass it back"],
+                correct: 2,
+                explanation: "Mate is sacred! Take a sip, say 'gracias' when done, and pass it back. Refusing is rude."
+            },
+            {
+                situation: "You're invited to dinner at 9pm.",
+                options: ["Arrive at 9pm", "Arrive at 9:30-10pm", "Arrive at 8:45pm"],
+                correct: 1,
+                explanation: "Argentine time is very flexible. Arriving 30-60 minutes late is completely normal and expected."
+            },
+            {
+                situation: "Someone wants to discuss Messi vs Maradona.",
+                options: ["Say you don't like football", "Engage passionately", "Change the subject"],
+                correct: 1,
+                explanation: "Football is life in Argentina! Engage in the passionate debate — it's part of the culture."
+            }
+        ],
+        info: "Dinner after 9pm. Tipping 10%. Learn tango basics. Bring USD for better exchange rates. Football is religion."
     },
     {
         name: "Peru",
@@ -244,13 +575,53 @@ const countries = [
         flag: "🇲🇦",
         image: "https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=400&h=300&fit=crop",
         region: "Africa",
+        language: "Arabic & French",
         currency: "Moroccan Dirham (MAD)",
-        dos: ["Greet with 'Salam'", "Dress modestly", "Bargain at souks", "Accept mint tea offers"],
-        donts: ["Don't eat with left hand", "Don't refuse hospitality", "Don't photograph people without asking", "Don't show affection in public"],
-        food: "Tagine, Couscous, Mint Tea",
-        apps: ["Careem", "Google Translate", "Maps.me", "XE Currency", "CIB Mobile", "Fawry", "Glovo", "Jumia Food"],
-        transport: "Trains (ONCF), Grand taxis, Petit taxis, Buses",
-        info: "Bargaining is expected. Respect Ramadan. Mint tea is a social ritual."
+        riskLevel: "🟡 Moderate",
+        briefingTime: "4 Minutes",
+        culturalSnapshot: {
+            communicationStyle: "Indirect, hospitable, expressive",
+            punctuality: "Very flexible, 'Moroccan time'",
+            personalSpace: "Low in markets, moderate elsewhere",
+            collectivism: "Strong family and religious community",
+            englishProficiency: "Limited, French widely spoken"
+        },
+        dos: ["Greet with 'Salam alaikum' (peace be upon you)", "Dress modestly (cover shoulders and knees)", "Bargain at souks — it's expected", "Accept mint tea offers (3 glasses is tradition)", "Use right hand for eating and greeting"],
+        donts: ["Don't eat with left hand (considered unclean)", "Don't refuse hospitality", "Don't photograph people without asking", "Don't show public displays of affection", "Don't disrespect Islam or the King"],
+        socialEtiquette: {
+            dining: ["Eat with right hand only", "Mint tea ceremony is sacred", "Bread is used to scoop food"],
+            business: ["Relationships before business", "Expect long conversations over tea", "Patience is essential"],
+            publicBehavior: ["Respect prayer times (5 times daily)", "Dress conservatively", "Ramadan fasting is observed — be respectful"]
+        },
+        moneyTips: {
+            tipping: "10% in restaurants, small tips for guides",
+            cardUsage: "Cash preferred, cards in hotels/restaurants",
+            transitCards: "Cash for most transport"
+        },
+        food: "Tagine, Couscous, Mint Tea, Pastilla, Harira",
+        apps: ["Careem (Transport)", "Google Translate", "Maps.me (Offline)", "CIB Mobile (Banking)"],
+        transport: "Trains (ONCF): Comfortable between cities. Grand taxis: Shared long-distance. Petit taxis: City transport. Buses: Cheap option",
+        scenarios: [
+            {
+                situation: "You're offered mint tea in a shop.",
+                options: ["Refuse politely", "Accept and drink 3 glasses", "Take one sip and leave"],
+                correct: 1,
+                explanation: "Mint tea is sacred hospitality. Tradition says 3 glasses: first is gentle, second is strong, third is bitter like death."
+            },
+            {
+                situation: "A vendor quotes 500 MAD for a rug.",
+                options: ["Pay 500 MAD", "Offer 200 MAD", "Walk away without negotiating"],
+                correct: 1,
+                explanation: "Bargaining is expected! Start at 40-50% of asking price. It's part of the shopping experience."
+            },
+            {
+                situation: "You're invited to eat with a Moroccan family.",
+                options: ["Use left hand", "Use right hand only", "Use fork and knife"],
+                correct: 1,
+                explanation: "Always use right hand for eating. Left hand is considered unclean. Bread is used to scoop food."
+            }
+        ],
+        info: "Bargaining is expected. Respect Ramadan. Mint tea is a social ritual. Dress modestly."
     },
     {
         name: "Australia",
@@ -296,13 +667,53 @@ const countries = [
         flag: "🇵🇹",
         image: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=400&h=300&fit=crop",
         region: "Europe",
+        language: "Portuguese",
         currency: "Euro (€)",
-        dos: ["Try pastéis de nata", "Learn basic Portuguese", "Enjoy fado music", "Be relaxed"],
-        donts: ["Don't speak Spanish", "Don't rush", "Don't skip small towns", "Don't expect punctuality"],
-        food: "Bacalhau, Pastéis de Nata, Francesinha",
-        apps: ["Uber", "Bolt", "CP (trains)", "Google Maps", "MB Way", "Glovo", "Uber Eats"],
-        transport: "Trams, Metro, Trains, Uber, Bolt",
-        info: "Very affordable. English widely spoken. Great wine. Safe for travelers."
+        riskLevel: "🟢 Low Risk",
+        briefingTime: "3 Minutes",
+        culturalSnapshot: {
+            communicationStyle: "Warm, indirect, polite",
+            punctuality: "Relaxed, 'Portuguese time' is common",
+            personalSpace: "Moderate, friendly and welcoming",
+            collectivism: "Family-oriented, community-focused",
+            englishProficiency: "Very good, especially younger generation"
+        },
+        dos: ["Try pastéis de nata everywhere you go", "Learn basic Portuguese (they appreciate the effort)", "Enjoy fado music in Lisbon", "Be relaxed and go with the flow", "Greet with two kisses on the cheek"],
+        donts: ["Don't speak Spanish (it's offensive)", "Don't rush meals or experiences", "Don't skip small towns and villages", "Don't expect strict punctuality", "Don't compare Portugal to Spain"],
+        socialEtiquette: {
+            dining: ["Lunch is 12:30-2pm, dinner 8-10pm", "Bread and butter at table is usually charged", "Coffee culture is strong — try 'bica' (espresso)"],
+            business: ["More relaxed than Northern Europe", "Relationships matter more than contracts", "Expect some delays and flexibility"],
+            publicBehavior: ["Very safe and welcoming to tourists", "Tipping is appreciated but not mandatory", "People are helpful and friendly"]
+        },
+        moneyTips: {
+            tipping: "5-10% appreciated but not required",
+            cardUsage: "Widely accepted, cash still useful",
+            transitCards: "Viva Viagem card for Lisbon, Andante for Porto"
+        },
+        food: "Bacalhau (cod), Pastéis de Nata, Francesinha, Caldo Verde",
+        apps: ["Uber/Bolt (Transport)", "CP (Trains)", "MB Way (Payments)", "Glovo (Food)"],
+        transport: "Trams: Iconic in Lisbon. Metro: Clean and efficient. Trains: CP connects cities. Uber/Bolt: Affordable and common",
+        scenarios: [
+            {
+                situation: "Someone speaks to you in Spanish.",
+                options: ["Respond in Spanish", "Politely say you're in Portugal", "Ignore them"],
+                correct: 1,
+                explanation: "Portuguese people are proud of their language. Politely remind them you're in Portugal and they speak Portuguese."
+            },
+            {
+                situation: "You're invited to dinner at 8pm.",
+                options: ["Arrive at 8pm sharp", "Arrive at 8:15-8:30pm", "Arrive at 7:45pm"],
+                correct: 1,
+                explanation: "Portuguese time is relaxed. Arriving 15-30 minutes late is normal and expected for social events."
+            },
+            {
+                situation: "You finish your meal at a restaurant.",
+                options: ["Leave 20% tip", "Leave 5-10% or round up", "No tip needed"],
+                correct: 1,
+                explanation: "Tipping 5-10% or rounding up is appreciated but not mandatory. Service charge is usually included."
+            }
+        ],
+        info: "Very affordable. English widely spoken. Great wine. Safe for travelers. Don't confuse with Spain!"
     },
     {
         name: "Netherlands",
@@ -953,51 +1364,265 @@ function renderCardFront() {
 
 function renderCardBack() {
     const content = document.getElementById('cardBackContent');
+    const country = currentCard;
     
-    content.innerHTML = `
-        <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: #333;">${currentCard.flag} ${currentCard.name}</h2>
-        
-        <div style="margin-bottom: 20px;">
-            <h3 style="font-size: 1.2rem; color: #667eea; margin-bottom: 10px;">💰 Currency</h3>
-            <p style="color: #666;">${currentCard.currency}</p>
-        </div>
-        
-        <div style="margin-bottom: 20px;">
-            <h3 style="font-size: 1.2rem; color: #667eea; margin-bottom: 10px;">✅ Do's</h3>
-            <ul style="list-style: none; padding: 0;">
-                ${currentCard.dos.map(item => `<li style="padding: 8px 0; color: #666;">• ${item}</li>`).join('')}
-            </ul>
-        </div>
-        
-        <div style="margin-bottom: 20px;">
-            <h3 style="font-size: 1.2rem; color: #667eea; margin-bottom: 10px;">❌ Don'ts</h3>
-            <ul style="list-style: none; padding: 0;">
-                ${currentCard.donts.map(item => `<li style="padding: 8px 0; color: #666;">• ${item}</li>`).join('')}
-            </ul>
-        </div>
-        
-        <div style="margin-bottom: 20px;">
-            <h3 style="font-size: 1.2rem; color: #667eea; margin-bottom: 10px;">🍽️ Must-Try Food</h3>
-            <p style="color: #666;">${currentCard.food}</p>
-        </div>
-        
-        <div style="margin-bottom: 20px;">
-            <h3 style="font-size: 1.2rem; color: #667eea; margin-bottom: 10px;">🚇 Transportation</h3>
-            <p style="color: #666;">${currentCard.transport}</p>
-        </div>
-        
-        <div style="margin-bottom: 20px;">
-            <h3 style="font-size: 1.2rem; color: #667eea; margin-bottom: 10px;">📱 Essential Apps</h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                ${currentCard.apps.map(app => `<span style="background: #667eea; color: white; padding: 6px 12px; border-radius: 15px; font-size: 0.85rem;">${app}</span>`).join('')}
+    // Check if country has enhanced data
+    const hasEnhancedData = country.riskLevel && country.culturalSnapshot;
+    
+    if (hasEnhancedData) {
+        content.innerHTML = `
+            <div style="max-height: 70vh; overflow-y: auto; padding-right: 10px;">
+                <h2 style="font-size: 1.8rem; margin-bottom: 10px; color: #333;">${country.flag} ${country.name}</h2>
+                
+                <div style="display: flex; gap: 15px; margin-bottom: 25px; flex-wrap: wrap;">
+                    <div style="background: #fee; padding: 8px 16px; border-radius: 8px; font-size: 0.9rem;">
+                        <strong>Cultural Risk Level:</strong> ${country.riskLevel}
+                    </div>
+                    <div style="background: #eff6ff; padding: 8px 16px; border-radius: 8px; font-size: 0.9rem;">
+                        <strong>Briefing Time:</strong> ${country.briefingTime}
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 25px; background: #f9fafb; padding: 15px; border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h3 style="font-size: 1.1rem; color: #667eea; margin-bottom: 12px;">🧭 Quick Cultural Snapshot</h3>
+                    <div style="display: grid; gap: 8px; font-size: 0.9rem; color: #666;">
+                        <div><strong>Communication:</strong> ${country.culturalSnapshot.communicationStyle}</div>
+                        <div><strong>Punctuality:</strong> ${country.culturalSnapshot.punctuality}</div>
+                        <div><strong>Personal Space:</strong> ${country.culturalSnapshot.personalSpace}</div>
+                        <div><strong>Collectivism:</strong> ${country.culturalSnapshot.collectivism}</div>
+                        <div><strong>English:</strong> ${country.culturalSnapshot.englishProficiency}</div>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <h3 style="font-size: 1.2rem; color: #10b981; margin-bottom: 10px;">✅ Top ${country.dos.length} Do's</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        ${country.dos.map(item => `<li style="padding: 8px 0; color: #666; border-bottom: 1px solid #f0f0f0;">✓ ${item}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div style="margin-bottom: 25px;">
+                    <h3 style="font-size: 1.2rem; color: #ef4444; margin-bottom: 10px;">❌ Top ${country.donts.length} Don'ts</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        ${country.donts.map(item => `<li style="padding: 8px 0; color: #666; border-bottom: 1px solid #f0f0f0;">${item}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div style="margin-bottom: 25px; background: #fef3c7; padding: 15px; border-radius: 12px;">
+                    <h3 style="font-size: 1.1rem; color: #d97706; margin-bottom: 12px;">🍜 Social Etiquette Highlights</h3>
+                    <div style="margin-bottom: 10px;">
+                        <strong style="color: #333;">Dining</strong>
+                        <ul style="margin: 5px 0; padding-left: 20px; color: #666; font-size: 0.9rem;">
+                            ${country.socialEtiquette.dining.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <strong style="color: #333;">Business</strong>
+                        <ul style="margin: 5px 0; padding-left: 20px; color: #666; font-size: 0.9rem;">
+                            ${country.socialEtiquette.business.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div>
+                        <strong style="color: #333;">Public Behavior</strong>
+                        <ul style="margin: 5px 0; padding-left: 20px; color: #666; font-size: 0.9rem;">
+                            ${country.socialEtiquette.publicBehavior.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 25px;">
+                    <h3 style="font-size: 1.1rem; color: #667eea; margin-bottom: 10px;">💳 Money & Payments</h3>
+                    <div style="background: #f9fafb; padding: 12px; border-radius: 8px; font-size: 0.9rem; color: #666;">
+                        <div style="margin-bottom: 6px;"><strong>Currency:</strong> ${country.currency}</div>
+                        <div style="margin-bottom: 6px;"><strong>Tipping:</strong> ${country.moneyTips.tipping}</div>
+                        <div style="margin-bottom: 6px;"><strong>Card Usage:</strong> ${country.moneyTips.cardUsage}</div>
+                        <div><strong>Transit Cards:</strong> ${country.moneyTips.transitCards}</div>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 25px;">
+                    <h3 style="font-size: 1.1rem; color: #667eea; margin-bottom: 10px;">📲 Must-Have Apps</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        ${country.apps.map(app => `<span style="background: #667eea; color: white; padding: 8px 14px; border-radius: 20px; font-size: 0.85rem;">${app}</span>`).join('')}
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 25px;">
+                    <h3 style="font-size: 1.1rem; color: #667eea; margin-bottom: 10px;">🚆 Transportation Snapshot</h3>
+                    <p style="color: #666; font-size: 0.9rem; line-height: 1.6;">${country.transport}</p>
+                </div>
+                
+                <div style="margin-bottom: 25px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 12px; color: white;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 15px;">🎮 Scenario Challenge</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 15px;">Test your cultural knowledge!</p>
+                    <div id="quizContainer-${country.name.replace(/\s/g, '')}" style="display: flex; flex-direction: column; gap: 15px;">
+                        ${country.scenarios.map((scenario, idx) => `
+                            <div class="scenario-card" style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2);">
+                                <div style="font-weight: 600; margin-bottom: 10px; font-size: 0.95rem;">Situation ${idx + 1}:</div>
+                                <div style="margin-bottom: 12px; font-size: 0.9rem;">${scenario.situation}</div>
+                                <div style="display: flex; flex-direction: column; gap: 8px;">
+                                    ${scenario.options.map((option, optIdx) => `
+                                        <button 
+                                            onclick="answerScenario('${country.name.replace(/\s/g, '')}', ${idx}, ${optIdx})"
+                                            class="scenario-option"
+                                            id="option-${country.name.replace(/\s/g, '')}-${idx}-${optIdx}"
+                                            style="background: rgba(255,255,255,0.9); color: #333; padding: 10px; border: 2px solid transparent; border-radius: 8px; cursor: pointer; text-align: left; font-size: 0.85rem; transition: all 0.2s;">
+                                            ${String.fromCharCode(65 + optIdx)}) ${option}
+                                        </button>
+                                    `).join('')}
+                                </div>
+                                <div id="explanation-${country.name.replace(/\s/g, '')}-${idx}" style="display: none; margin-top: 12px; padding: 12px; background: rgba(255,255,255,0.25); border-radius: 8px; font-size: 0.85rem; line-height: 1.5;">
+                                    <strong>✓ Correct!</strong><br>${scenario.explanation}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div id="quizScore-${country.name.replace(/\s/g, '')}" style="display: none; margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.2); border-radius: 10px; text-align: center; font-size: 1.1rem; font-weight: 700;">
+                        🎉 Cultural IQ Score: <span id="scoreValue-${country.name.replace(/\s/g, '')}">0</span>/${country.scenarios.length} - Ready to Land!
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <h3 style="font-size: 1.1rem; color: #667eea; margin-bottom: 10px;">🗣️ Language</h3>
+                    <p style="color: #666;">${country.language}</p>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <h3 style="font-size: 1.1rem; color: #667eea; margin-bottom: 10px;">ℹ️ Important Info</h3>
+                    <p style="color: #666; line-height: 1.6;">${country.info}</p>
+                </div>
             </div>
-        </div>
-        
-        <div style="margin-bottom: 20px;">
-            <h3 style="font-size: 1.2rem; color: #667eea; margin-bottom: 10px;">ℹ️ Important Info</h3>
-            <p style="color: #666;">${currentCard.info}</p>
-        </div>
-    `;
+        `;
+    } else {
+        // Fallback for countries without enhanced data
+        content.innerHTML = `
+            <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: #333;">${country.flag} ${country.name}</h2>
+            
+            <div style="margin-bottom: 20px;">
+                <h3 style="font-size: 1.2rem; color: #667eea; margin-bottom: 10px;">🗣️ Language</h3>
+                <p style="color: #666;">${country.language}</p>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <h3 style="font-size: 1.2rem; color: #667eea; margin-bottom: 10px;">💰 Currency</h3>
+                <p style="color: #666;">${country.currency}</p>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <h3 style="font-size: 1.2rem; color: #667eea; margin-bottom: 10px;">✅ Do's</h3>
+                <ul style="list-style: none; padding: 0;">
+                    ${country.dos.map(item => `<li style="padding: 8px 0; color: #666;">• ${item}</li>`).join('')}
+                </ul>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <h3 style="font-size: 1.2rem; color: #667eea; margin-bottom: 10px;">❌ Don'ts</h3>
+                <ul style="list-style: none; padding: 0;">
+                    ${country.donts.map(item => `<li style="padding: 8px 0; color: #666;">• ${item}</li>`).join('')}
+                </ul>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <h3 style="font-size: 1.2rem; color: #667eea; margin-bottom: 10px;">🍽️ Must-Try Food</h3>
+                <p style="color: #666;">${country.food}</p>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <h3 style="font-size: 1.2rem; color: #667eea; margin-bottom: 10px;">🚇 Transportation</h3>
+                <p style="color: #666;">${country.transport}</p>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <h3 style="font-size: 1.2rem; color: #667eea; margin-bottom: 10px;">📱 Essential Apps</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    ${country.apps.map(app => `<span style="background: #667eea; color: white; padding: 6px 12px; border-radius: 15px; font-size: 0.85rem;">${app}</span>`).join('')}
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <h3 style="font-size: 1.2rem; color: #667eea; margin-bottom: 10px;">ℹ️ Important Info</h3>
+                <p style="color: #666;">${country.info}</p>
+            </div>
+        `;
+    }
+}
+
+// Quiz interaction tracking
+let quizScores = JSON.parse(localStorage.getItem('quizScores')) || {};
+
+function answerScenario(countryId, scenarioIdx, selectedOption) {
+    const country = countries.find(c => c.name.replace(/\s/g, '') === countryId);
+    if (!country || !country.scenarios) return;
+    
+    const scenario = country.scenarios[scenarioIdx];
+    const isCorrect = selectedOption === scenario.correct;
+    
+    // Disable all options for this scenario
+    scenario.options.forEach((_, optIdx) => {
+        const btn = document.getElementById(`option-${countryId}-${scenarioIdx}-${optIdx}`);
+        if (btn) {
+            btn.disabled = true;
+            btn.style.cursor = 'not-allowed';
+            btn.style.opacity = '0.6';
+        }
+    });
+    
+    // Highlight the selected option
+    const selectedBtn = document.getElementById(`option-${countryId}-${scenarioIdx}-${selectedOption}`);
+    if (selectedBtn) {
+        if (isCorrect) {
+            selectedBtn.style.background = '#10b981';
+            selectedBtn.style.color = 'white';
+            selectedBtn.style.borderColor = '#10b981';
+        } else {
+            selectedBtn.style.background = '#ef4444';
+            selectedBtn.style.color = 'white';
+            selectedBtn.style.borderColor = '#ef4444';
+        }
+    }
+    
+    // Show correct answer if wrong
+    if (!isCorrect) {
+        const correctBtn = document.getElementById(`option-${countryId}-${scenarioIdx}-${scenario.correct}`);
+        if (correctBtn) {
+            correctBtn.style.background = '#10b981';
+            correctBtn.style.color = 'white';
+            correctBtn.style.borderColor = '#10b981';
+        }
+    }
+    
+    // Show explanation
+    const explanation = document.getElementById(`explanation-${countryId}-${scenarioIdx}`);
+    if (explanation) {
+        explanation.style.display = 'block';
+        if (!isCorrect) {
+            explanation.innerHTML = `<strong>✗ Incorrect.</strong><br>${scenario.explanation}`;
+            explanation.style.background = 'rgba(239, 68, 68, 0.2)';
+        }
+    }
+    
+    // Update score
+    if (!quizScores[countryId]) {
+        quizScores[countryId] = { answered: [], correct: 0 };
+    }
+    
+    if (!quizScores[countryId].answered.includes(scenarioIdx)) {
+        quizScores[countryId].answered.push(scenarioIdx);
+        if (isCorrect) {
+            quizScores[countryId].correct++;
+        }
+        localStorage.setItem('quizScores', JSON.stringify(quizScores));
+    }
+    
+    // Check if all scenarios answered
+    if (quizScores[countryId].answered.length === country.scenarios.length) {
+        const scoreDisplay = document.getElementById(`quizScore-${countryId}`);
+        const scoreValue = document.getElementById(`scoreValue-${countryId}`);
+        if (scoreDisplay && scoreValue) {
+            scoreValue.textContent = quizScores[countryId].correct;
+            scoreDisplay.style.display = 'block';
+        }
+    }
 }
 
 function setCardStatus(status) {
