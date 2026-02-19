@@ -991,67 +991,32 @@ function renderCardBack() {
                 
                 <div style="display: flex; gap: 15px; margin-bottom: 25px; flex-wrap: wrap;">
                     <div style="background: #fee; padding: 8px 16px; border-radius: 8px; font-size: 0.9rem;">
-                        <strong>Cultural Risk Level:</strong> ${country.riskLevel}
+                        <strong>Risk Level:</strong> ${country.riskLevel}
                     </div>
                     <div style="background: #eff6ff; padding: 8px 16px; border-radius: 8px; font-size: 0.9rem;">
-                        <strong>Briefing Time:</strong> ${country.briefingTime}
+                        <strong>Briefing:</strong> ${country.briefingTime}
                     </div>
                 </div>
                 
-                <div style="margin-bottom: 25px; background: #f9fafb; padding: 15px; border-radius: 12px; border-left: 4px solid #667eea;">
-                    <h3 style="font-size: 1.1rem; color: #667eea; margin-bottom: 12px;">🧭 Quick Cultural Snapshot</h3>
-                    <div style="display: grid; gap: 8px; font-size: 0.9rem; color: #666;">
-                        <div><strong>Communication:</strong> ${country.culturalSnapshot.communicationStyle}</div>
-                        <div><strong>Punctuality:</strong> ${country.culturalSnapshot.punctuality}</div>
-                        <div><strong>Personal Space:</strong> ${country.culturalSnapshot.personalSpace}</div>
-                        <div><strong>Collectivism:</strong> ${country.culturalSnapshot.collectivism}</div>
-                        <div><strong>English:</strong> ${country.culturalSnapshot.englishProficiency}</div>
-                    </div>
+                <!-- ESSENTIAL INFORMATION -->
+                <div style="margin-bottom: 25px; background: #fff3cd; padding: 15px; border-radius: 12px; border-left: 4px solid #ffc107;">
+                    <h3 style="font-size: 1.2rem; color: #856404; margin-bottom: 12px;">⚠️ Critical Cultural Offenses to Avoid</h3>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        ${country.donts.slice(0, 3).map(item => `<li style="padding: 8px 0; color: #856404; font-weight: 600; border-bottom: 1px solid #ffe69c;">❌ ${item}</li>`).join('')}
+                    </ul>
                 </div>
                 
                 <div style="margin-bottom: 20px;">
-                    <h3 style="font-size: 1.2rem; color: #10b981; margin-bottom: 10px;">✅ Top ${country.dos.length} Do's</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        ${country.dos.map(item => `<li style="padding: 8px 0; color: #666; border-bottom: 1px solid #f0f0f0;">✓ ${item}</li>`).join('')}
-                    </ul>
+                    <h3 style="font-size: 1.1rem; color: #667eea; margin-bottom: 10px;">🗣️ Language</h3>
+                    <p style="color: #666; font-size: 1rem; font-weight: 600;">${country.language}</p>
                 </div>
                 
                 <div style="margin-bottom: 25px;">
-                    <h3 style="font-size: 1.2rem; color: #ef4444; margin-bottom: 10px;">❌ Top ${country.donts.length} Don'ts</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        ${country.donts.map(item => `<li style="padding: 8px 0; color: #666; border-bottom: 1px solid #f0f0f0;">${item}</li>`).join('')}
-                    </ul>
-                </div>
-                
-                <div style="margin-bottom: 25px; background: #fef3c7; padding: 15px; border-radius: 12px;">
-                    <h3 style="font-size: 1.1rem; color: #d97706; margin-bottom: 12px;">🍜 Social Etiquette Highlights</h3>
-                    <div style="margin-bottom: 10px;">
-                        <strong style="color: #333;">Dining</strong>
-                        <ul style="margin: 5px 0; padding-left: 20px; color: #666; font-size: 0.9rem;">
-                            ${country.socialEtiquette.dining.map(item => `<li>${item}</li>`).join('')}
-                        </ul>
-                    </div>
-                    <div style="margin-bottom: 10px;">
-                        <strong style="color: #333;">Business</strong>
-                        <ul style="margin: 5px 0; padding-left: 20px; color: #666; font-size: 0.9rem;">
-                            ${country.socialEtiquette.business.map(item => `<li>${item}</li>`).join('')}
-                        </ul>
-                    </div>
-                    <div>
-                        <strong style="color: #333;">Public Behavior</strong>
-                        <ul style="margin: 5px 0; padding-left: 20px; color: #666; font-size: 0.9rem;">
-                            ${country.socialEtiquette.publicBehavior.map(item => `<li>${item}</li>`).join('')}
-                        </ul>
-                    </div>
-                </div>
-                
-                <div style="margin-bottom: 25px;">
-                    <h3 style="font-size: 1.1rem; color: #667eea; margin-bottom: 10px;">💳 Money & Payments</h3>
+                    <h3 style="font-size: 1.1rem; color: #667eea; margin-bottom: 10px;">💰 Currency & Payments</h3>
                     <div style="background: #f9fafb; padding: 12px; border-radius: 8px; font-size: 0.9rem; color: #666;">
                         <div style="margin-bottom: 6px;"><strong>Currency:</strong> ${country.currency}</div>
                         <div style="margin-bottom: 6px;"><strong>Tipping:</strong> ${country.moneyTips.tipping}</div>
-                        <div style="margin-bottom: 6px;"><strong>Card Usage:</strong> ${country.moneyTips.cardUsage}</div>
-                        <div><strong>Transit Cards:</strong> ${country.moneyTips.transitCards}</div>
+                        <div><strong>Cards:</strong> ${country.moneyTips.cardUsage}</div>
                     </div>
                 </div>
                 
@@ -1063,48 +1028,104 @@ function renderCardBack() {
                 </div>
                 
                 <div style="margin-bottom: 25px;">
-                    <h3 style="font-size: 1.1rem; color: #667eea; margin-bottom: 10px;">🚆 Transportation Snapshot</h3>
+                    <h3 style="font-size: 1.1rem; color: #667eea; margin-bottom: 10px;">🚆 Transportation</h3>
                     <p style="color: #666; font-size: 0.9rem; line-height: 1.6;">${country.transport}</p>
                 </div>
                 
-                <div style="margin-bottom: 25px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 12px; color: white;">
-                    <h3 style="font-size: 1.2rem; margin-bottom: 15px;">🎮 Scenario Challenge</h3>
-                    <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 15px;">Test your cultural knowledge!</p>
-                    <div id="quizContainer-${country.name.replace(/\s/g, '')}" style="display: flex; flex-direction: column; gap: 15px;">
-                        ${country.scenarios.map((scenario, idx) => `
-                            <div class="scenario-card" style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2);">
-                                <div style="font-weight: 600; margin-bottom: 10px; font-size: 0.95rem;">Situation ${idx + 1}:</div>
-                                <div style="margin-bottom: 12px; font-size: 0.9rem;">${scenario.situation}</div>
-                                <div style="display: flex; flex-direction: column; gap: 8px;">
-                                    ${scenario.options.map((option, optIdx) => `
-                                        <button 
-                                            onclick="answerScenario('${country.name.replace(/\s/g, '')}', ${idx}, ${optIdx})"
-                                            class="scenario-option"
-                                            id="option-${country.name.replace(/\s/g, '')}-${idx}-${optIdx}"
-                                            style="background: rgba(255,255,255,0.9); color: #333; padding: 10px; border: 2px solid transparent; border-radius: 8px; cursor: pointer; text-align: left; font-size: 0.85rem; transition: all 0.2s;">
-                                            ${String.fromCharCode(65 + optIdx)}) ${option}
-                                        </button>
-                                    `).join('')}
-                                </div>
-                                <div id="explanation-${country.name.replace(/\s/g, '')}-${idx}" style="display: none; margin-top: 12px; padding: 12px; background: rgba(255,255,255,0.25); border-radius: 8px; font-size: 0.85rem; line-height: 1.5;">
-                                    <strong>✓ Correct!</strong><br>${scenario.explanation}
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                    <div id="quizScore-${country.name.replace(/\s/g, '')}" style="display: none; margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.2); border-radius: 10px; text-align: center; font-size: 1.1rem; font-weight: 700;">
-                        🎉 Cultural IQ Score: <span id="scoreValue-${country.name.replace(/\s/g, '')}">0</span>/${country.scenarios.length} - Ready to Land!
-                    </div>
-                </div>
-                
                 <div style="margin-bottom: 20px;">
-                    <h3 style="font-size: 1.1rem; color: #667eea; margin-bottom: 10px;">🗣️ Language</h3>
-                    <p style="color: #666;">${country.language}</p>
-                </div>
-                
-                <div style="margin-bottom: 20px;">
-                    <h3 style="font-size: 1.1rem; color: #667eea; margin-bottom: 10px;">ℹ️ Important Info</h3>
+                    <h3 style="font-size: 1.1rem; color: #667eea; margin-bottom: 10px;">ℹ️ Key Info</h3>
                     <p style="color: #666; line-height: 1.6;">${country.info}</p>
+                </div>
+                
+                <!-- SEE MORE SECTION -->
+                <div style="margin-top: 30px; border-top: 2px solid #e5e7eb; padding-top: 20px;">
+                    <button 
+                        onclick="toggleSeeMore('${country.name.replace(/\s/g, '')}')" 
+                        id="seeMoreBtn-${country.name.replace(/\s/g, '')}"
+                        style="width: 100%; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 12px; font-size: 1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                        <span>📚 See More Details & Quiz</span>
+                        <span id="seeMoreIcon-${country.name.replace(/\s/g, '')}">▼</span>
+                    </button>
+                    
+                    <div id="seeMoreContent-${country.name.replace(/\s/g, '')}" style="display: none; margin-top: 20px;">
+                        
+                        <div style="margin-bottom: 25px; background: #f9fafb; padding: 15px; border-radius: 12px; border-left: 4px solid #667eea;">
+                            <h3 style="font-size: 1.1rem; color: #667eea; margin-bottom: 12px;">🧭 Cultural Snapshot</h3>
+                            <div style="display: grid; gap: 8px; font-size: 0.9rem; color: #666;">
+                                <div><strong>Communication:</strong> ${country.culturalSnapshot.communicationStyle}</div>
+                                <div><strong>Punctuality:</strong> ${country.culturalSnapshot.punctuality}</div>
+                                <div><strong>Personal Space:</strong> ${country.culturalSnapshot.personalSpace}</div>
+                                <div><strong>Collectivism:</strong> ${country.culturalSnapshot.collectivism}</div>
+                                <div><strong>English:</strong> ${country.culturalSnapshot.englishProficiency}</div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <h3 style="font-size: 1.2rem; color: #10b981; margin-bottom: 10px;">✅ All Do's</h3>
+                            <ul style="list-style: none; padding: 0;">
+                                ${country.dos.map(item => `<li style="padding: 8px 0; color: #666; border-bottom: 1px solid #f0f0f0;">✓ ${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div style="margin-bottom: 25px;">
+                            <h3 style="font-size: 1.2rem; color: #ef4444; margin-bottom: 10px;">❌ All Don'ts</h3>
+                            <ul style="list-style: none; padding: 0;">
+                                ${country.donts.map(item => `<li style="padding: 8px 0; color: #666; border-bottom: 1px solid #f0f0f0;">${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div style="margin-bottom: 25px; background: #fef3c7; padding: 15px; border-radius: 12px;">
+                            <h3 style="font-size: 1.1rem; color: #d97706; margin-bottom: 12px;">🍜 Social Etiquette</h3>
+                            <div style="margin-bottom: 10px;">
+                                <strong style="color: #333;">Dining</strong>
+                                <ul style="margin: 5px 0; padding-left: 20px; color: #666; font-size: 0.9rem;">
+                                    ${country.socialEtiquette.dining.map(item => `<li>${item}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <div style="margin-bottom: 10px;">
+                                <strong style="color: #333;">Business</strong>
+                                <ul style="margin: 5px 0; padding-left: 20px; color: #666; font-size: 0.9rem;">
+                                    ${country.socialEtiquette.business.map(item => `<li>${item}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <div>
+                                <strong style="color: #333;">Public Behavior</strong>
+                                <ul style="margin: 5px 0; padding-left: 20px; color: #666; font-size: 0.9rem;">
+                                    ${country.socialEtiquette.publicBehavior.map(item => `<li>${item}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 25px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 12px; color: white;">
+                            <h3 style="font-size: 1.2rem; margin-bottom: 15px;">🎮 Cultural Quiz Challenge</h3>
+                            <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 15px;">Test your knowledge!</p>
+                            <div id="quizContainer-${country.name.replace(/\s/g, '')}" style="display: flex; flex-direction: column; gap: 15px;">
+                                ${country.scenarios.map((scenario, idx) => `
+                                    <div class="scenario-card" style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2);">
+                                        <div style="font-weight: 600; margin-bottom: 10px; font-size: 0.95rem;">Situation ${idx + 1}:</div>
+                                        <div style="margin-bottom: 12px; font-size: 0.9rem;">${scenario.situation}</div>
+                                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                                            ${scenario.options.map((option, optIdx) => `
+                                                <button 
+                                                    onclick="answerScenario('${country.name.replace(/\s/g, '')}', ${idx}, ${optIdx})"
+                                                    class="scenario-option"
+                                                    id="option-${country.name.replace(/\s/g, '')}-${idx}-${optIdx}"
+                                                    style="background: rgba(255,255,255,0.9); color: #333; padding: 10px; border: 2px solid transparent; border-radius: 8px; cursor: pointer; text-align: left; font-size: 0.85rem; transition: all 0.2s;">
+                                                    ${String.fromCharCode(65 + optIdx)}) ${option}
+                                                </button>
+                                            `).join('')}
+                                        </div>
+                                        <div id="explanation-${country.name.replace(/\s/g, '')}-${idx}" style="display: none; margin-top: 12px; padding: 12px; background: rgba(255,255,255,0.25); border-radius: 8px; font-size: 0.85rem; line-height: 1.5;">
+                                            <strong>✓ Correct!</strong><br>${scenario.explanation}
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <div id="quizScore-${country.name.replace(/\s/g, '')}" style="display: none; margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.2); border-radius: 10px; text-align: center; font-size: 1.1rem; font-weight: 700;">
+                                🎉 Cultural IQ Score: <span id="scoreValue-${country.name.replace(/\s/g, '')}">0</span>/${country.scenarios.length} - Ready to Land!
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         `;
@@ -1237,6 +1258,23 @@ function answerScenario(countryId, scenarioIdx, selectedOption) {
             scoreValue.textContent = quizScores[countryId].correct;
             scoreDisplay.style.display = 'block';
         }
+    }
+}
+
+// Toggle See More section
+function toggleSeeMore(countryId) {
+    const content = document.getElementById(`seeMoreContent-${countryId}`);
+    const btn = document.getElementById(`seeMoreBtn-${countryId}`);
+    const icon = document.getElementById(`seeMoreIcon-${countryId}`);
+    
+    if (content.style.display === 'none') {
+        content.style.display = 'block';
+        icon.textContent = '▲';
+        btn.querySelector('span:first-child').textContent = '📚 Hide Details & Quiz';
+    } else {
+        content.style.display = 'none';
+        icon.textContent = '▼';
+        btn.querySelector('span:first-child').textContent = '📚 See More Details & Quiz';
     }
 }
 

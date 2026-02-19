@@ -1563,3 +1563,44 @@ body {
 .card-modal-content::-webkit-scrollbar-thumb:hover {
     background: #5568d3;
 }
+
+
+/* See More Button Animation */
+#seeMoreBtn-Japan:hover,
+#seeMoreBtn-Thailand:hover,
+#seeMoreBtn-Germany:hover,
+#seeMoreBtn-Portugal:hover,
+#seeMoreBtn-Indonesia:hover,
+#seeMoreBtn-Vietnam:hover,
+#seeMoreBtn-Turkey:hover,
+#seeMoreBtn-Morocco:hover,
+#seeMoreBtn-Mexico:hover,
+#seeMoreBtn-Argentina:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* See More Content Animation */
+#seeMoreContent-Japan,
+#seeMoreContent-Thailand,
+#seeMoreContent-Germany,
+#seeMoreContent-Portugal,
+#seeMoreContent-Indonesia,
+#seeMoreContent-Vietnam,
+#seeMoreContent-Turkey,
+#seeMoreContent-Morocco,
+#seeMoreContent-Mexico,
+#seeMoreContent-Argentina {
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
