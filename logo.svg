@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <rect width="1024" height="1024" fill="#f5f5f5"/>
+  <g transform="translate(512, 512)">
+    <!-- Compass needle (green gradient) -->
+    <path d="M 0,-150 L 40,0 L 0,20 L -40,0 Z" fill="url(#greenGradient)"/>
+    <!-- Compass circle -->
+    <circle cx="0" cy="0" r="120" fill="none" stroke="#2e4369" stroke-width="8"/>
+    <circle cx="0" cy="0" r="100" fill="none" stroke="#2e4369" stroke-width="4"/>
+    <!-- Center dot -->
+    <circle cx="0" cy="0" r="25" fill="#9FE870"/>
+    <circle cx="0" cy="0" r="15" fill="#7BC943"/>
+    <circle cx="0" cy="0" r="8" fill="#87CEEB"/>
+  </g>
+  <!-- Text -->
+  <text x="512" y="680" font-family="Arial, sans-serif" font-size="80" font-weight="600" fill="#9FE870" text-anchor="middle">CULTURE</text>
+  <text x="512" y="760" font-family="Arial, sans-serif" font-size="80" font-weight="700" fill="#2e4369" text-anchor="middle">COMPASS</text>
+  <defs>
+    <linearGradient id="greenGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#9FE870;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2e8b57;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

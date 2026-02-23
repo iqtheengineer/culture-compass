@@ -555,8 +555,8 @@ let selectedInterests = userProfile.interests;
 
 // Initialize App
 function init() {
-    // Skip onboarding and go directly to explore page
-    showApp();
+    // Go directly to explore page - single page app
+    showScreen('appContainer');
     switchView('explore');
     
     // Set default user profile
@@ -574,6 +574,7 @@ function init() {
 // Enhanced Welcome Experience
 function initializeWelcomeExperience() {
     startWelcomeAnimations();
+    startCarousel();
     startTaglineRotation();
     addInteractiveElements();
 }
@@ -606,6 +607,49 @@ function startWelcomeAnimations() {
 // Enhanced tagline rotation
 let taglineIndex = 0;
 let taglineInterval;
+
+// Feature Carousel
+let currentSlide = 0;
+let carouselInterval;
+
+function startCarousel() {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dots .dot');
+    
+    if (slides.length === 0) return;
+    
+    carouselInterval = setInterval(() => {
+        goToSlide((currentSlide + 1) % slides.length);
+    }, 4000); // Change slide every 4 seconds
+}
+
+function goToSlide(index) {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dots .dot');
+    
+    if (slides.length === 0) return;
+    
+    // Remove active class from current slide
+    slides[currentSlide].classList.remove('active');
+    slides[currentSlide].classList.add('prev');
+    dots[currentSlide].classList.remove('active');
+    
+    // Update current slide
+    currentSlide = index;
+    
+    // Add active class to new slide
+    setTimeout(() => {
+        slides.forEach(slide => slide.classList.remove('prev'));
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+    }, 50);
+}
+
+function stopCarousel() {
+    if (carouselInterval) {
+        clearInterval(carouselInterval);
+    }
+}
 
 function startTaglineRotation() {
     const taglines = document.querySelectorAll('.tagline-text');
@@ -661,6 +705,7 @@ function showScreen(screenId) {
 // Onboarding Flow
 function showLocationPrompt() {
     stopTaglineRotation();
+    stopCarousel();
     showScreen('locationScreen');
 }
 
@@ -845,14 +890,8 @@ function createCountryCard(country) {
     card.className = 'country-card';
     card.onclick = () => openCardModal(country);
     
-    const status = cardStatus[country.name] || 'locked';
-    const badgeClass = status === 'gold' ? 'badge-gold' : status === 'silver' ? 'badge-silver' : 'badge-bronze';
-    const badgeText = status === 'gold' ? '🥇 Visited' : status === 'silver' ? '🥈 Downloaded' : status === 'bronze' ? '🥉 Saved' : '';
-    
     card.innerHTML = `
-        <div class="card-image" style="background-image: url('${country.image}')">
-            ${status !== 'locked' ? `<div class="card-badge ${badgeClass}">${badgeText}</div>` : ''}
-        </div>
+        <div class="card-image" style="background-image: url('${country.image}')"></div>
         <div class="card-info">
             <div class="card-country-name">${country.flag} ${country.name}</div>
             <div class="card-region">${country.region}</div>
@@ -952,26 +991,12 @@ function flipCard() {
 
 function renderCardFront() {
     const content = document.getElementById('cardFrontContent');
-    const status = cardStatus[currentCard.name] || 'locked';
     
     content.innerHTML = `
         <div class="card-image" style="background-image: url('${currentCard.image}'); height: 300px; border-radius: 15px; position: relative;">
             <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; background: rgba(0,0,0,0.7); padding: 15px; border-radius: 10px; color: white;">
                 <h2 style="font-size: 2rem; margin-bottom: 5px;">${currentCard.flag} ${currentCard.name}</h2>
                 <p style="font-size: 1.1rem; opacity: 0.9;">${currentCard.region}</p>
-            </div>
-        </div>
-        <div style="padding: 20px 0;">
-            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-                <button onclick="setCardStatus('bronze')" style="flex: 1; padding: 12px; border: 2px solid #cd7f32; background: ${status === 'bronze' ? '#cd7f32' : 'white'}; color: ${status === 'bronze' ? 'white' : '#cd7f32'}; border-radius: 10px; font-weight: 700; cursor: pointer;">
-                    🥉 Save
-                </button>
-                <button onclick="setCardStatus('silver')" style="flex: 1; padding: 12px; border: 2px solid #c0c0c0; background: ${status === 'silver' ? '#c0c0c0' : 'white'}; color: ${status === 'silver' ? 'white' : '#666'}; border-radius: 10px; font-weight: 700; cursor: pointer;">
-                    🥈 Download
-                </button>
-                <button onclick="setCardStatus('gold')" style="flex: 1; padding: 12px; border: 2px solid #ffd700; background: ${status === 'gold' ? '#ffd700' : 'white'}; color: #333; border-radius: 10px; font-weight: 700; cursor: pointer;">
-                    🥇 Visited
-                </button>
             </div>
         </div>
     `;
@@ -1061,14 +1086,14 @@ function renderCardBack() {
                         </div>
                         
                         <div style="margin-bottom: 20px;">
-                            <h3 style="font-size: 1.2rem; color: #10b981; margin-bottom: 10px;">✅ All Do's</h3>
+                            <h3 style="font-size: 1.2rem; color: #10b981; margin-bottom: 10px;">✅ Do's</h3>
                             <ul style="list-style: none; padding: 0;">
                                 ${country.dos.map(item => `<li style="padding: 8px 0; color: #666; border-bottom: 1px solid #f0f0f0;">✓ ${item}</li>`).join('')}
                             </ul>
                         </div>
                         
                         <div style="margin-bottom: 25px;">
-                            <h3 style="font-size: 1.2rem; color: #ef4444; margin-bottom: 10px;">❌ All Don'ts</h3>
+                            <h3 style="font-size: 1.2rem; color: #ef4444; margin-bottom: 10px;">❌ Don'ts</h3>
                             <ul style="list-style: none; padding: 0;">
                                 ${country.donts.map(item => `<li style="padding: 8px 0; color: #666; border-bottom: 1px solid #f0f0f0;">${item}</li>`).join('')}
                             </ul>
@@ -1504,3 +1529,33 @@ function saveData() {
 
 // Start App
 init();
+
+
+// Blog Navigation
+function showExplore(event) {
+    if (event) event.preventDefault();
+    
+    // Toggle sections
+    document.getElementById('countriesSection').style.display = 'block';
+    document.getElementById('blogSection').style.display = 'none';
+    
+    // Update nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+    });
+    event.target.classList.add('active');
+}
+
+function showBlog(event) {
+    if (event) event.preventDefault();
+    
+    // Toggle sections
+    document.getElementById('countriesSection').style.display = 'none';
+    document.getElementById('blogSection').style.display = 'block';
+    
+    // Update nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+    });
+    event.target.classList.add('active');
+}

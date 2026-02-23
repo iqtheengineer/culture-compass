@@ -13,6 +13,36 @@
             <div class="logo-large">🧭</div>
             <h1 class="app-title">Culture Compass</h1>
             
+            <!-- Feature Carousel -->
+            <div class="feature-carousel">
+                <div class="carousel-slide active">
+                    <div class="slide-icon">🌍</div>
+                    <h3 class="slide-title">Choose a country</h3>
+                    <p class="slide-description">Explore 10 countries with detailed cultural guides</p>
+                </div>
+                <div class="carousel-slide">
+                    <div class="slide-icon">📚</div>
+                    <h3 class="slide-title">Learn the cultural do's & don'ts</h3>
+                    <p class="slide-description">Master essential etiquette and avoid cultural mistakes</p>
+                </div>
+                <div class="carousel-slide">
+                    <div class="slide-icon">🎮</div>
+                    <h3 class="slide-title">Test yourself with real-life scenarios</h3>
+                    <p class="slide-description">Practice with interactive cultural challenges</p>
+                </div>
+                <div class="carousel-slide">
+                    <div class="slide-icon">📊</div>
+                    <h3 class="slide-title">Track your Cultural IQ</h3>
+                    <p class="slide-description">Build confidence before you travel</p>
+                </div>
+                <div class="carousel-dots">
+                    <span class="dot active" onclick="goToSlide(0)"></span>
+                    <span class="dot" onclick="goToSlide(1)"></span>
+                    <span class="dot" onclick="goToSlide(2)"></span>
+                    <span class="dot" onclick="goToSlide(3)"></span>
+                </div>
+            </div>
+            
             <!-- Rotating Taglines -->
             <div class="rotating-taglines">
                 <p class="tagline-text active">Learn the culture before you take a trip.</p>
@@ -63,8 +93,8 @@
 
     <!-- Main App Container -->
     <div id="appContainer" class="screen active">
-        <!-- Top Bar -->
-        <div class="top-bar">
+        <!-- Top Bar - Hidden for single page -->
+        <div class="top-bar" style="display: none;">
             <div class="user-info">
                 <span id="userAvatar" class="user-avatar">🧳</span>
                 <span id="userNameDisplay" class="user-name">Traveler</span>
@@ -75,132 +105,307 @@
         </div>
 
         <!-- Map View -->
-        <div id="mapView" class="view-content">
-            <div class="map-container">
-                <div class="world-map" id="worldMap"></div>
-            </div>
-            <div class="quick-stats">
-                <div class="stat-card">
-                    <span class="stat-icon">🥉</span>
-                    <span class="stat-value" id="bronzeCount">0</span>
-                    <span class="stat-label">Saved</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-icon">🥈</span>
-                    <span class="stat-value" id="silverCount">0</span>
-                    <span class="stat-label">Downloaded</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-icon">🥇</span>
-                    <span class="stat-value" id="goldCount">0</span>
-                    <span class="stat-label">Visited</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Collection View -->
-        <div id="collectionView" class="view-content">
-            <div class="collection-header">
-                <h2>My Collection</h2>
-                <div class="filter-chips">
-                    <button class="chip active" onclick="filterCollection('all')">All</button>
-                    <button class="chip" onclick="filterCollection('bronze')">🥉 Saved</button>
-                    <button class="chip" onclick="filterCollection('silver')">🥈 Downloaded</button>
-                    <button class="chip" onclick="filterCollection('gold')">🥇 Visited</button>
-                </div>
-            </div>
-            <div id="collectionGrid" class="card-binder"></div>
-        </div>
+        <div id="mapView" class="view-content" style="display: none;"></div>
 
         <!-- Explore View -->
         <div id="exploreView" class="view-content active">
-            <!-- Hero Header Section -->
-            <div class="hero-header">
-                <div class="hero-content">
-                    <div class="logo-hero">🧭</div>
-                    <h1 class="hero-title">Culture Compass</h1>
-                    <p class="hero-slogan">Don't Just Visit. Belong.</p>
-                    <p class="hero-directions">
-                        👇 Browse countries below • Click any card to learn customs, food, and travel tips • 
-                        Save favorites to your collection
-                    </p>
+            <!-- Wise-Style Navigation Header -->
+            <nav class="wise-nav">
+                <div class="nav-container">
+                    <div class="nav-brand">
+                        <span class="brand-name">Culture Compass</span>
+                    </div>
+                    <div class="nav-links">
+                        <a href="#" class="nav-link active" onclick="showExplore(event)">Countries</a>
+                        <a href="#" class="nav-link" onclick="showBlog(event)">Blog</a>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Search and Filters -->
-            <div class="explore-controls">
-                <div class="search-container">
-                    <input type="text" id="exploreSearch" class="search-input" placeholder="🔍 Search countries...">
-                </div>
-                <div class="region-filters">
-                    <button class="region-chip active" onclick="filterRegion('all')">All</button>
-                    <button class="region-chip" onclick="filterRegion('Asia')">Asia</button>
-                    <button class="region-chip" onclick="filterRegion('Europe')">Europe</button>
-                    <button class="region-chip" onclick="filterRegion('Africa')">Africa</button>
-                    <button class="region-chip" onclick="filterRegion('Americas')">Americas</button>
-                    <button class="region-chip" onclick="filterRegion('Oceania')">Oceania</button>
-                </div>
-            </div>
-            
-            <!-- Countries Grid -->
-            <div id="exploreGrid" class="explore-grid"></div>
-        </div>
+            </nav>
 
-        <!-- Profile View -->
-        <div id="profileView" class="view-content">
-            <div class="profile-header">
-                <div class="profile-avatar-large" id="profileAvatarLarge">🧳</div>
-                <h2 id="profileNameLarge">Traveler</h2>
-                <p class="profile-stat">🌍 <span id="percentageCollected">0%</span> of world collected</p>
-            </div>
-            <div class="profile-sections">
-                <div class="profile-section">
-                    <h3>📊 Your Stats</h3>
-                    <div class="stats-list">
-                        <div class="stat-row">
-                            <span>Countries Visited</span>
-                            <span id="visitedCount">0</span>
+            <!-- Countries Section -->
+            <div id="countriesSection">
+                <!-- Hero Section - Two Column Split -->
+                <div class="wise-hero">
+                    <div class="hero-container-split">
+                        <!-- LEFT SIDE -->
+                        <div class="hero-left">
+                            <div class="hero-tagline">Travel Smart. Travel Respectfully.</div>
+                            <h1 class="hero-headline">Navigate Culture with Confidence.</h1>
+                            <p class="hero-subheadline">Real-time cultural insights, local etiquette, currency guidance, and safety awareness — all in one intelligent travel companion.</p>
+                            
+                            <div class="app-buttons">
+                                <a href="#" class="app-button app-store">
+                                    <span class="button-icon">🍎</span>
+                                    <div class="button-text">
+                                        <span class="button-label">Download on</span>
+                                        <span class="button-store">App Store</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="app-button google-play">
+                                    <span class="button-icon">▶️</span>
+                                    <div class="button-text">
+                                        <span class="button-label">Get it on</span>
+                                        <span class="button-store">Google Play</span>
+                                    </div>
+                                </a>
+                            </div>
+                            
+                            <p class="trust-line">Designed for responsible global travelers.</p>
                         </div>
-                        <div class="stat-row">
-                            <span>Cards Downloaded</span>
-                            <span id="downloadedCount">0</span>
-                        </div>
-                        <div class="stat-row">
-                            <span>Cards Saved</span>
-                            <span id="savedCount">0</span>
+                        
+                        <!-- RIGHT SIDE - Phone Mockup -->
+                        <div class="hero-right">
+                            <div class="phone-mockup">
+                                <div class="phone-frame">
+                                    <div class="phone-notch"></div>
+                                    <div class="phone-screen">
+                                        <!-- Country Profile Header -->
+                                        <div class="mock-header">
+                                            <span class="mock-flag">🇯🇵</span>
+                                            <span class="mock-country">Japan</span>
+                                        </div>
+                                        
+                                        <!-- Cultural Tips Card -->
+                                        <div class="mock-card cultural-tips">
+                                            <div class="mock-card-title">📘 Cultural Tips</div>
+                                            <div class="mock-tip">✓ Bow when greeting</div>
+                                            <div class="mock-tip">✓ Remove shoes indoors</div>
+                                            <div class="mock-tip">✓ No tipping required</div>
+                                        </div>
+                                        
+                                        <!-- Currency Converter -->
+                                        <div class="mock-card currency">
+                                            <div class="mock-card-title">💱 Currency</div>
+                                            <div class="mock-currency-row">
+                                                <span>$100 USD</span>
+                                                <span>→</span>
+                                                <span>¥14,850</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Safety Alert Card -->
+                                        <div class="mock-card alert">
+                                            <div class="mock-card-title">⚠️ What to Be Aware Of</div>
+                                            <div class="mock-alert-text">Avoid loud phone calls on trains</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="profile-section">
-                    <h3>⚙️ Settings</h3>
-                    <div class="settings-list">
-                        <button class="setting-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
-                        <button class="setting-btn" onclick="showOfflineManager()">📥 Manage Offline Cards</button>
-                        <button class="setting-btn" onclick="resetApp()">🔄 Reset Progress</button>
+                
+                <!-- Search and Filters -->
+                <div class="explore-controls">
+                    <div class="search-container">
+                        <input type="text" id="exploreSearch" class="search-input" placeholder="Search countries...">
+                    </div>
+                    <div class="region-filters">
+                        <button class="region-chip active" onclick="filterRegion('all')">All Countries</button>
+                        <button class="region-chip" onclick="filterRegion('Asia')">Asia</button>
+                        <button class="region-chip" onclick="filterRegion('Europe')">Europe</button>
+                        <button class="region-chip" onclick="filterRegion('Africa')">Africa</button>
+                        <button class="region-chip" onclick="filterRegion('Americas')">Americas</button>
                     </div>
                 </div>
+                
+                <!-- Countries Grid -->
+                <div class="explore-container">
+                    <div id="exploreGrid" class="explore-grid"></div>
+                </div>
             </div>
+
+            <!-- Blog Section -->
+            <div id="blogSection" style="display: none;">
+                <!-- Blog Hero -->
+                <div class="wise-hero">
+                    <div class="hero-container">
+                        <h1 class="hero-heading">Culture & Travel Blog</h1>
+                        <p class="hero-subheading">Expert tips, cultural insights, and real stories from travelers around the world.</p>
+                    </div>
+                </div>
+
+                <!-- Blog Content -->
+                <div class="blog-container">
+                    <!-- Travel Tips Section -->
+                    <section class="blog-section">
+                        <div class="section-header">
+                            <h2 class="section-title">✈️ Travel Tips</h2>
+                            <p class="section-description">Essential advice for your next adventure</p>
+                        </div>
+                        <div class="blog-grid">
+                            <article class="blog-card">
+                                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&h=250&fit=crop')"></div>
+                                <div class="blog-content">
+                                    <span class="blog-category">Travel Tips</span>
+                                    <h3 class="blog-title">How to Navigate Public Transport in Foreign Cities</h3>
+                                    <p class="blog-excerpt">Master metro systems, buses, and trains abroad. Learn how to buy tickets, read maps, and avoid common tourist mistakes.</p>
+                                    <div class="blog-meta">
+                                        <span class="blog-date">6 min read</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="blog-card">
+                                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&h=250&fit=crop')"></div>
+                                <div class="blog-content">
+                                    <span class="blog-category">Travel Tips</span>
+                                    <h3 class="blog-title">Understanding Tipping Customs Around the World</h3>
+                                    <p class="blog-excerpt">When to tip, how much, and where tipping is considered offensive. A complete guide to gratuity etiquette by country.</p>
+                                    <div class="blog-meta">
+                                        <span class="blog-date">8 min read</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="blog-card">
+                                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&h=250&fit=crop')"></div>
+                                <div class="blog-content">
+                                    <span class="blog-category">Travel Tips</span>
+                                    <h3 class="blog-title">Essential Phrases: Greetings in 10 Languages</h3>
+                                    <p class="blog-excerpt">Learn how to say hello, thank you, and goodbye in Japanese, German, Portuguese, Arabic, and more. Pronunciation guide included.</p>
+                                    <div class="blog-meta">
+                                        <span class="blog-date">5 min read</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="blog-card">
+                                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=400&h=250&fit=crop')"></div>
+                                <div class="blog-content">
+                                    <span class="blog-category">Travel Tips</span>
+                                    <h3 class="blog-title">Dining Etiquette: What Not to Do at the Table</h3>
+                                    <p class="blog-excerpt">From chopstick rules in Asia to bread etiquette in Europe, avoid embarrassing dining mistakes abroad.</p>
+                                    <div class="blog-meta">
+                                        <span class="blog-date">7 min read</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="blog-card">
+                                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1464938050520-ef2270bb8ce8?w=400&h=250&fit=crop')"></div>
+                                <div class="blog-content">
+                                    <span class="blog-category">Travel Tips</span>
+                                    <h3 class="blog-title">Dress Codes: What to Wear When Visiting Religious Sites</h3>
+                                    <p class="blog-excerpt">Respectful attire for mosques, temples, churches, and shrines. Country-specific guidelines for modest dress.</p>
+                                    <div class="blog-meta">
+                                        <span class="blog-date">6 min read</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="blog-card">
+                                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&h=250&fit=crop')"></div>
+                                <div class="blog-content">
+                                    <span class="blog-category">Travel Tips</span>
+                                    <h3 class="blog-title">Body Language Mistakes That Can Offend Locals</h3>
+                                    <p class="blog-excerpt">Gestures that are rude abroad: thumbs up, OK sign, pointing, and more. Learn what to avoid in each culture.</p>
+                                    <div class="blog-meta">
+                                        <span class="blog-date">5 min read</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <!-- Living Abroad Section -->
+                    <section class="blog-section">
+                        <div class="section-header">
+                            <h2 class="section-title">🏠 Living Abroad</h2>
+                            <p class="section-description">Insights for expats and digital nomads</p>
+                        </div>
+                        <div class="blog-grid">
+                            <article class="blog-card">
+                                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=250&fit=crop')"></div>
+                                <div class="blog-content">
+                                    <span class="blog-category">Living Abroad</span>
+                                    <h3 class="blog-title">Navigating Culture Shock: The 4 Stages Explained</h3>
+                                    <p class="blog-excerpt">Understanding the honeymoon phase, frustration, adjustment, and acceptance. How to cope with each stage.</p>
+                                    <div class="blog-meta">
+                                        <span class="blog-date">10 min read</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="blog-card">
+                                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400&h=250&fit=crop')"></div>
+                                <div class="blog-content">
+                                    <span class="blog-category">Living Abroad</span>
+                                    <h3 class="blog-title">Building a Social Circle as an Expat</h3>
+                                    <p class="blog-excerpt">Where to meet people, join communities, and make lasting friendships in a new country. Apps and strategies that work.</p>
+                                    <div class="blog-meta">
+                                        <span class="blog-date">8 min read</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="blog-card">
+                                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=250&fit=crop')"></div>
+                                <div class="blog-content">
+                                    <span class="blog-category">Living Abroad</span>
+                                    <h3 class="blog-title">Learning the Local Language: Effective Strategies</h3>
+                                    <p class="blog-excerpt">Immersion techniques, language exchange partners, and apps that actually work. How to become conversational in 6 months.</p>
+                                    <div class="blog-meta">
+                                        <span class="blog-date">9 min read</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="blog-card">
+                                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=250&fit=crop')"></div>
+                                <div class="blog-content">
+                                    <span class="blog-category">Living Abroad</span>
+                                    <h3 class="blog-title">Working Remotely Abroad: Visa and Tax Guide</h3>
+                                    <p class="blog-excerpt">Digital nomad visas, tax implications, and legal considerations for remote workers. Country-by-country breakdown.</p>
+                                    <div class="blog-meta">
+                                        <span class="blog-date">12 min read</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="blog-card">
+                                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop')"></div>
+                                <div class="blog-content">
+                                    <span class="blog-category">Living Abroad</span>
+                                    <h3 class="blog-title">Managing Finances Across Borders</h3>
+                                    <p class="blog-excerpt">International banking, currency exchange, sending money home, and avoiding fees. Best apps and services for expats.</p>
+                                    <div class="blog-meta">
+                                        <span class="blog-date">10 min read</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="blog-card">
+                                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=400&h=250&fit=crop')"></div>
+                                <div class="blog-content">
+                                    <span class="blog-category">Living Abroad</span>
+                                    <h3 class="blog-title">Maintaining Relationships While Living Overseas</h3>
+                                    <p class="blog-excerpt">Staying connected with family and friends back home. Time zone management, video calls, and dealing with homesickness.</p>
+                                    <div class="blog-meta">
+                                        <span class="blog-date">7 min read</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="wise-footer">
+                <div class="footer-container">
+                    <p>© 2024 Culture Compass. Learn before you go.</p>
+                </div>
+            </footer>
         </div>
 
-        <!-- Bottom Navigation -->
-        <nav class="bottom-nav">
-            <button class="nav-btn" onclick="switchView('map')">
-                <span class="nav-icon">🌍</span>
-                <span class="nav-label">Map</span>
-            </button>
-            <button class="nav-btn" onclick="switchView('collection')">
-                <span class="nav-icon">🃏</span>
-                <span class="nav-label">Collection</span>
-            </button>
-            <button class="nav-btn active" onclick="switchView('explore')">
-                <span class="nav-icon">🧭</span>
-                <span class="nav-label">Explore</span>
-            </button>
-            <button class="nav-btn" onclick="switchView('profile')">
-                <span class="nav-icon">👤</span>
-                <span class="nav-label">Profile</span>
-            </button>
-        </nav>
+        <!-- Hidden views (not used in single page mode) -->
+        <div id="mapView" class="view-content" style="display: none;"></div>
+        <div id="collectionView" class="view-content" style="display: none;"></div>
+        <div id="profileView" class="view-content" style="display: none;"></div>
+
+        <!-- Bottom Navigation - Hidden for single page -->
+        <nav class="bottom-nav" style="display: none;">
     </div>
 
     <!-- Card Detail Modal -->
