@@ -113,7 +113,7 @@
             <nav class="wise-nav">
                 <div class="nav-container">
                     <div class="nav-brand">
-                        <span class="brand-name">Culture Compass</span>
+                        <img src="culture_compass_logo_transparent.png" alt="Culture Compass" class="brand-logo">
                     </div>
                     <div class="nav-links">
                         <a href="#" class="nav-link active" onclick="showExplore(event)">Countries</a>
@@ -133,61 +133,34 @@
                             <h1 class="hero-headline">Navigate Culture with Confidence.</h1>
                             <p class="hero-subheadline">Real-time cultural insights, local etiquette, currency guidance, and safety awareness — all in one intelligent travel companion.</p>
                             
-                            <div class="app-buttons">
-                                <a href="#" class="app-button app-store">
-                                    <span class="button-icon">🍎</span>
-                                    <div class="button-text">
-                                        <span class="button-label">Download on</span>
-                                        <span class="button-store">App Store</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="app-button google-play">
-                                    <span class="button-icon">▶️</span>
-                                    <div class="button-text">
-                                        <span class="button-label">Get it on</span>
-                                        <span class="button-store">Google Play</span>
-                                    </div>
-                                </a>
-                            </div>
-                            
                             <p class="trust-line">Designed for responsible global travelers.</p>
                         </div>
                         
                         <!-- RIGHT SIDE - Phone Mockup -->
                         <div class="hero-right">
-                            <div class="phone-mockup">
-                                <div class="phone-frame">
-                                    <div class="phone-notch"></div>
-                                    <div class="phone-screen">
-                                        <!-- Country Profile Header -->
-                                        <div class="mock-header">
-                                            <span class="mock-flag">🇯🇵</span>
-                                            <span class="mock-country">Japan</span>
+                            <div class="phone-frame">
+                                <div class="phone-notch"></div>
+                                <div class="phone-screen">
+                                    <div class="mock-header">
+                                        <span class="mock-flag">🇯🇵</span>
+                                        <span class="mock-country">Japan</span>
+                                    </div>
+                                    <div class="mock-card cultural-tips">
+                                        <div class="mock-card-title">✓ Cultural Do's</div>
+                                        <div class="mock-tip">• Bow when greeting</div>
+                                        <div class="mock-tip">• Remove shoes indoors</div>
+                                        <div class="mock-tip">• Be punctual</div>
+                                    </div>
+                                    <div class="mock-card currency">
+                                        <div class="mock-card-title">💱 Currency</div>
+                                        <div class="mock-currency-row">
+                                            <span>1 USD =</span>
+                                            <span>¥149.50</span>
                                         </div>
-                                        
-                                        <!-- Cultural Tips Card -->
-                                        <div class="mock-card cultural-tips">
-                                            <div class="mock-card-title">📘 Cultural Tips</div>
-                                            <div class="mock-tip">✓ Bow when greeting</div>
-                                            <div class="mock-tip">✓ Remove shoes indoors</div>
-                                            <div class="mock-tip">✓ No tipping required</div>
-                                        </div>
-                                        
-                                        <!-- Currency Converter -->
-                                        <div class="mock-card currency">
-                                            <div class="mock-card-title">💱 Currency</div>
-                                            <div class="mock-currency-row">
-                                                <span>$100 USD</span>
-                                                <span>→</span>
-                                                <span>¥14,850</span>
-                                            </div>
-                                        </div>
-                                        
-                                        <!-- Safety Alert Card -->
-                                        <div class="mock-card alert">
-                                            <div class="mock-card-title">⚠️ What to Be Aware Of</div>
-                                            <div class="mock-alert-text">Avoid loud phone calls on trains</div>
-                                        </div>
+                                    </div>
+                                    <div class="mock-card alert">
+                                        <div class="mock-card-title">⚠️ Safety Alert</div>
+                                        <div class="mock-alert-text">Typhoon season: June-October. Check weather before travel.</div>
                                     </div>
                                 </div>
                             </div>
@@ -217,13 +190,15 @@
 
             <!-- Blog Section -->
             <div id="blogSection" style="display: none;">
-                <!-- Blog Hero -->
-                <div class="wise-hero">
-                    <div class="hero-container">
-                        <h1 class="hero-heading">Culture & Travel Blog</h1>
-                        <p class="hero-subheading">Expert tips, cultural insights, and real stories from travelers around the world.</p>
+                <!-- Blog List View -->
+                <div id="blogListView">
+                    <!-- Blog Hero -->
+                    <div class="wise-hero">
+                        <div class="hero-container">
+                            <h1 class="hero-heading">Culture & Travel Blog</h1>
+                            <p class="hero-subheading">Expert tips, cultural insights, and real stories from travelers around the world.</p>
+                        </div>
                     </div>
-                </div>
 
                 <!-- Blog Content -->
                 <div class="blog-container">
@@ -234,7 +209,7 @@
                             <p class="section-description">Essential advice for your next adventure</p>
                         </div>
                         <div class="blog-grid">
-                            <article class="blog-card">
+                            <article class="blog-card" onclick="openArticle('public-transport')">
                                 <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&h=250&fit=crop')"></div>
                                 <div class="blog-content">
                                     <span class="blog-category">Travel Tips</span>
@@ -246,7 +221,7 @@
                                 </div>
                             </article>
 
-                            <article class="blog-card">
+                            <article class="blog-card" onclick="openArticle('tipping-customs')">
                                 <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&h=250&fit=crop')"></div>
                                 <div class="blog-content">
                                     <span class="blog-category">Travel Tips</span>
@@ -258,7 +233,7 @@
                                 </div>
                             </article>
 
-                            <article class="blog-card">
+                            <article class="blog-card" onclick="openArticle('essential-phrases')">
                                 <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&h=250&fit=crop')"></div>
                                 <div class="blog-content">
                                     <span class="blog-category">Travel Tips</span>
@@ -270,7 +245,7 @@
                                 </div>
                             </article>
 
-                            <article class="blog-card">
+                            <article class="blog-card" onclick="openArticle('dining-etiquette')">
                                 <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=400&h=250&fit=crop')"></div>
                                 <div class="blog-content">
                                     <span class="blog-category">Travel Tips</span>
@@ -282,7 +257,7 @@
                                 </div>
                             </article>
 
-                            <article class="blog-card">
+                            <article class="blog-card" onclick="openArticle('dress-codes')">
                                 <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1464938050520-ef2270bb8ce8?w=400&h=250&fit=crop')"></div>
                                 <div class="blog-content">
                                     <span class="blog-category">Travel Tips</span>
@@ -294,7 +269,7 @@
                                 </div>
                             </article>
 
-                            <article class="blog-card">
+                            <article class="blog-card" onclick="openArticle('body-language')">
                                 <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&h=250&fit=crop')"></div>
                                 <div class="blog-content">
                                     <span class="blog-category">Travel Tips</span>
@@ -315,7 +290,7 @@
                             <p class="section-description">Insights for expats and digital nomads</p>
                         </div>
                         <div class="blog-grid">
-                            <article class="blog-card">
+                            <article class="blog-card" onclick="openArticle('culture-shock')">
                                 <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=250&fit=crop')"></div>
                                 <div class="blog-content">
                                     <span class="blog-category">Living Abroad</span>
@@ -327,7 +302,7 @@
                                 </div>
                             </article>
 
-                            <article class="blog-card">
+                            <article class="blog-card" onclick="openArticle('social-circle')">
                                 <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400&h=250&fit=crop')"></div>
                                 <div class="blog-content">
                                     <span class="blog-category">Living Abroad</span>
@@ -339,7 +314,7 @@
                                 </div>
                             </article>
 
-                            <article class="blog-card">
+                            <article class="blog-card" onclick="openArticle('learning-language')">
                                 <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=250&fit=crop')"></div>
                                 <div class="blog-content">
                                     <span class="blog-category">Living Abroad</span>
@@ -351,7 +326,7 @@
                                 </div>
                             </article>
 
-                            <article class="blog-card">
+                            <article class="blog-card" onclick="openArticle('remote-work')">
                                 <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=250&fit=crop')"></div>
                                 <div class="blog-content">
                                     <span class="blog-category">Living Abroad</span>
@@ -363,7 +338,7 @@
                                 </div>
                             </article>
 
-                            <article class="blog-card">
+                            <article class="blog-card" onclick="openArticle('managing-finances')">
                                 <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop')"></div>
                                 <div class="blog-content">
                                     <span class="blog-category">Living Abroad</span>
@@ -375,7 +350,7 @@
                                 </div>
                             </article>
 
-                            <article class="blog-card">
+                            <article class="blog-card" onclick="openArticle('maintaining-relationships')">
                                 <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=400&h=250&fit=crop')"></div>
                                 <div class="blog-content">
                                     <span class="blog-category">Living Abroad</span>
@@ -389,7 +364,54 @@
                         </div>
                     </section>
                 </div>
+                </div>
+
+                <!-- Article View -->
+                <div id="articleView" style="display: none;">
+                    <div class="article-container">
+                        <button class="back-to-blog" onclick="backToBlog()">← Back to Blog</button>
+                        <article id="articleContent" class="article-content">
+                            <!-- Article content will be loaded here -->
+                        </article>
+                    </div>
+                </div>
             </div>
+
+            <!-- Waitlist Section -->
+            <section class="waitlist-section">
+                <div class="waitlist-container">
+                    <div class="waitlist-content">
+                        <h2 class="waitlist-heading">Be the First to Know</h2>
+                        <p class="waitlist-subheading">Join our waitlist to get notified when Culture Compass officially launches. Get early access and exclusive travel tips.</p>
+                        
+                        <form class="waitlist-form" id="waitlistForm" onsubmit="handleWaitlistSubmit(event)">
+                            <div class="form-row">
+                                <input 
+                                    type="text" 
+                                    id="waitlistName" 
+                                    class="waitlist-input" 
+                                    placeholder="Your name" 
+                                    required
+                                >
+                                <input 
+                                    type="email" 
+                                    id="waitlistEmail" 
+                                    class="waitlist-input" 
+                                    placeholder="Your email" 
+                                    required
+                                >
+                                <button type="submit" class="waitlist-btn">Notify Me</button>
+                            </div>
+                            <p class="waitlist-privacy">We respect your privacy. Unsubscribe at any time.</p>
+                        </form>
+                        
+                        <div id="waitlistSuccess" class="waitlist-success" style="display: none;">
+                            <span class="success-icon">✓</span>
+                            <p>Thanks for joining! We'll be in touch soon.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <!-- Footer -->
             <footer class="wise-footer">
@@ -423,6 +445,7 @@
         </div>
     </div>
 
+    <script src="articles.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

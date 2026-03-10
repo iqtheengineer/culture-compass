@@ -1559,3 +1559,135 @@ function showBlog(event) {
     });
     event.target.classList.add('active');
 }
+
+
+// Waitlist Form Handler
+function handleWaitlistSubmit(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('waitlistName').value;
+    const email = document.getElementById('waitlistEmail').value;
+    
+    // Here you would typically send this data to your backend/email service
+    // For now, we'll just show a success message
+    console.log('Waitlist signup:', { name, email });
+    
+    // Hide the form and show success message
+    document.getElementById('waitlistForm').style.display = 'none';
+    document.getElementById('waitlistSuccess').style.display = 'flex';
+    
+    // Optional: Reset form after a delay
+    setTimeout(() => {
+        document.getElementById('waitlistForm').reset();
+    }, 1000);
+}
+
+
+// ===== SCROLL ANIMATIONS =====
+// Intersection Observer for scroll-triggered animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const animateOnScroll = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+// Observe elements when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Add animation classes to elements
+    const countryCards = document.querySelectorAll('.country-card');
+    countryCards.forEach((card, index) => {
+        card.classList.add('fade-in-up');
+        animateOnScroll.observe(card);
+    });
+
+    const blogCards = document.querySelectorAll('.blog-card');
+    blogCards.forEach(card => {
+        animateOnScroll.observe(card);
+    });
+
+    // Parallax effect on scroll
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const scrolled = window.pageYOffset;
+                const parallaxElements = document.querySelectorAll('.hero-container-split');
+                
+                parallaxElements.forEach(element => {
+                    const speed = 0.5;
+                    element.style.transform = `translateY(${scrolled * speed}px)`;
+                });
+                
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+
+    // Add ripple effect to buttons
+    const buttons = document.querySelectorAll('.btn-primary, .waitlist-btn, .country-card');
+    buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.classList.add('ripple-effect');
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+        });
+    });
+});
+
+// Smooth scroll for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Add hover tilt effect to cards
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.country-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-12px) scale(1.03)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+        });
+    });
+});
