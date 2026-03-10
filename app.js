@@ -1691,3 +1691,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+
+// ===== SPLASH SCREEN ANIMATION =====
+window.addEventListener('DOMContentLoaded', () => {
+    const splashScreen = document.getElementById('splashScreen');
+    const splashLogo = document.querySelector('.splash-logo');
+    const body = document.body;
+    
+    // Add class to hide main content
+    body.classList.add('splash-active');
+    
+    // After logo animation completes (1.5s), add pulse
+    setTimeout(() => {
+        if (splashLogo) {
+            splashLogo.classList.add('pulse');
+        }
+    }, 1500);
+    
+    // After 3s total, fade out splash screen
+    setTimeout(() => {
+        if (splashScreen) {
+            splashScreen.classList.remove('active');
+            splashScreen.classList.add('fade-out');
+        }
+        body.classList.remove('splash-active');
+    }, 3000);
+    
+    // Remove splash screen from DOM after fade out (3.8s total)
+    setTimeout(() => {
+        if (splashScreen) {
+            splashScreen.style.display = 'none';
+        }
+    }, 3800);
+});
+
+// Prevent splash screen on subsequent page loads (optional)
+// Uncomment if you only want splash on first visit
+/*
+if (sessionStorage.getItem('splashShown')) {
+    document.getElementById('splashScreen').style.display = 'none';
+    document.body.classList.remove('splash-active');
+} else {
+    sessionStorage.setItem('splashShown', 'true');
+}
+*/
