@@ -6,6 +6,7 @@ const countries = [
         region: "Asia",
         language: "Japanese",
         currency: "Japanese Yen (¥)",
+        rarity: "Rare",
         riskLevel: "🔴 High Nuance",
         briefingTime: "5 Minutes",
         culturalSnapshot: {
@@ -59,6 +60,7 @@ const countries = [
         region: "Europe",
         language: "German",
         currency: "Euro (€)",
+        rarity: "Common",
         riskLevel: "🟢 Low Risk",
         briefingTime: "3 Minutes",
         culturalSnapshot: {
@@ -113,6 +115,7 @@ const countries = [
         region: "Asia",
         language: "Thai",
         currency: "Thai Baht (฿)",
+        rarity: "Rare",
         riskLevel: "🟡 Moderate",
         briefingTime: "4 Minutes",
         culturalSnapshot: {
@@ -167,6 +170,7 @@ const countries = [
         region: "Asia",
         language: "Vietnamese",
         currency: "Vietnamese Dong (₫)",
+        rarity: "Epic",
         riskLevel: "🟡 Moderate",
         briefingTime: "4 Minutes",
         culturalSnapshot: {
@@ -221,6 +225,7 @@ const countries = [
         region: "Asia",
         language: "Indonesian (Bahasa)",
         currency: "Indonesian Rupiah (Rp)",
+        rarity: "Rare",
         riskLevel: "🟡 Moderate",
         briefingTime: "4 Minutes",
         culturalSnapshot: {
@@ -275,6 +280,7 @@ const countries = [
         region: "Asia",
         language: "Turkish",
         currency: "Turkish Lira (₺)",
+        rarity: "Epic",
         riskLevel: "🟡 Moderate",
         briefingTime: "4 Minutes",
         culturalSnapshot: {
@@ -329,6 +335,7 @@ const countries = [
         region: "Americas",
         language: "Spanish",
         currency: "Mexican Peso ($)",
+        rarity: "Common",
         riskLevel: "🟡 Moderate",
         briefingTime: "4 Minutes",
         culturalSnapshot: {
@@ -383,6 +390,7 @@ const countries = [
         region: "Americas",
         language: "Spanish",
         currency: "Argentine Peso ($)",
+        rarity: "Rare",
         riskLevel: "🟡 Moderate",
         briefingTime: "4 Minutes",
         culturalSnapshot: {
@@ -437,6 +445,7 @@ const countries = [
         region: "Africa",
         language: "Arabic & French",
         currency: "Moroccan Dirham (MAD)",
+        rarity: "Epic",
         riskLevel: "🟡 Moderate",
         briefingTime: "4 Minutes",
         culturalSnapshot: {
@@ -491,6 +500,7 @@ const countries = [
         region: "Europe",
         language: "Portuguese",
         currency: "Euro (€)",
+        rarity: "Common",
         riskLevel: "🟢 Low Risk",
         briefingTime: "3 Minutes",
         culturalSnapshot: {
@@ -890,7 +900,10 @@ function createCountryCard(country) {
     card.className = 'country-card';
     card.onclick = () => openCardModal(country);
     
+    const rarityClass = `rarity-${country.rarity.toLowerCase()}`;
+    
     card.innerHTML = `
+        <div class="rarity-badge ${rarityClass}">${country.rarity}</div>
         <div class="card-image" style="background-image: url('${country.image}')"></div>
         <div class="card-info">
             <div class="card-country-name">${country.flag} ${country.name}</div>
@@ -1736,3 +1749,34 @@ if (sessionStorage.getItem('splashShown')) {
     sessionStorage.setItem('splashShown', 'true');
 }
 */
+
+
+// ===== PHONE MOCKUP SLIDESHOW =====
+document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.phone-slide');
+    let currentSlide = 0;
+    const slideInterval = 3500; // 3.5 seconds per slide
+    
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            if (i === index) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.remove('active');
+            }
+        });
+    }
+    
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+    
+    // Start slideshow after splash screen
+    setTimeout(() => {
+        if (slides.length > 0) {
+            showSlide(0);
+            setInterval(nextSlide, slideInterval);
+        }
+    }, 4000); // Start after splash screen completes
+});

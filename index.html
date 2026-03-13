@@ -148,26 +148,73 @@
                             <div class="phone-frame">
                                 <div class="phone-notch"></div>
                                 <div class="phone-screen">
-                                    <div class="mock-header">
-                                        <span class="mock-flag">🇯🇵</span>
-                                        <span class="mock-country">Japan</span>
-                                    </div>
-                                    <div class="mock-card cultural-tips">
-                                        <div class="mock-card-title">✓ Cultural Do's</div>
-                                        <div class="mock-tip">• Bow when greeting</div>
-                                        <div class="mock-tip">• Remove shoes indoors</div>
-                                        <div class="mock-tip">• Be punctual</div>
-                                    </div>
-                                    <div class="mock-card currency">
-                                        <div class="mock-card-title">💱 Currency</div>
-                                        <div class="mock-currency-row">
-                                            <span>1 USD =</span>
-                                            <span>¥149.50</span>
+                                    <!-- Slide 1: Country Selection -->
+                                    <div class="phone-slide active" data-slide="1">
+                                        <div class="mock-nav">
+                                            <span class="mock-nav-title">Choose a Country</span>
+                                        </div>
+                                        <div class="mock-country-grid">
+                                            <div class="mock-country-item">
+                                                <div class="mock-country-flag">🇯🇵</div>
+                                                <div class="mock-country-name">Japan</div>
+                                            </div>
+                                            <div class="mock-country-item">
+                                                <div class="mock-country-flag">🇩🇪</div>
+                                                <div class="mock-country-name">Germany</div>
+                                            </div>
+                                            <div class="mock-country-item">
+                                                <div class="mock-country-flag">🇹🇭</div>
+                                                <div class="mock-country-name">Thailand</div>
+                                            </div>
+                                            <div class="mock-country-item highlighted">
+                                                <div class="mock-country-flag">🇲🇽</div>
+                                                <div class="mock-country-name">Mexico</div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="mock-card alert">
-                                        <div class="mock-card-title">⚠️ Safety Alert</div>
-                                        <div class="mock-alert-text">Typhoon season: June-October. Check weather before travel.</div>
+
+                                    <!-- Slide 2: Country Card with Image -->
+                                    <div class="phone-slide" data-slide="2">
+                                        <div class="mock-country-header">
+                                            <div class="mock-country-image" style="background-image: url('https://images.unsplash.com/photo-1518638150340-f706e86654de?w=400&h=200&fit=crop')"></div>
+                                            <div class="mock-country-info">
+                                                <span class="mock-flag-large">🇲🇽</span>
+                                                <span class="mock-country-title">Mexico</span>
+                                            </div>
+                                        </div>
+                                        <div class="mock-card cultural-tips">
+                                            <div class="mock-card-title">✓ Cultural Do's</div>
+                                            <div class="mock-tip">• Greet warmly with handshake</div>
+                                            <div class="mock-tip">• Try street food</div>
+                                            <div class="mock-tip">• Learn basic Spanish</div>
+                                        </div>
+                                        <div class="mock-card currency">
+                                            <div class="mock-card-title">💱 Currency</div>
+                                            <div class="mock-currency-row">
+                                                <span>1 USD =</span>
+                                                <span>$17.20 MXN</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Slide 3: Cultural Tips Detail -->
+                                    <div class="phone-slide" data-slide="3">
+                                        <div class="mock-header">
+                                            <span class="mock-flag">🇲🇽</span>
+                                            <span class="mock-country">Mexico</span>
+                                        </div>
+                                        <div class="mock-section-title">Do's & Don'ts</div>
+                                        <div class="mock-card cultural-tips">
+                                            <div class="mock-card-title">✓ Do's</div>
+                                            <div class="mock-tip">• Be patient with timing</div>
+                                            <div class="mock-tip">• Tip 10-15% at restaurants</div>
+                                            <div class="mock-tip">• Greet warmly</div>
+                                        </div>
+                                        <div class="mock-card alert">
+                                            <div class="mock-card-title">✗ Don'ts</div>
+                                            <div class="mock-alert-text">• Don't drink tap water</div>
+                                            <div class="mock-alert-text">• Don't be overly punctual</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -191,6 +238,7 @@
                 
                 <!-- Countries Grid -->
                 <div class="explore-container">
+                    <p class="explore-instruction">👇 Click on a country to explore its culture card — tips, etiquette, and more.</p>
                     <div id="exploreGrid" class="explore-grid"></div>
                 </div>
             </div>
