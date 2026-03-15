@@ -900,10 +900,7 @@ function createCountryCard(country) {
     card.className = 'country-card';
     card.onclick = () => openCardModal(country);
     
-    const rarityClass = `rarity-${country.rarity.toLowerCase()}`;
-    
     card.innerHTML = `
-        <div class="rarity-badge ${rarityClass}">${country.rarity}</div>
         <div class="card-image" style="background-image: url('${country.image}')"></div>
         <div class="card-info">
             <div class="card-country-name">${country.flag} ${country.name}</div>
