@@ -1591,6 +1591,18 @@ async function handleWaitlistSubmit(event) {
     const email = document.getElementById('waitlistEmail').value.trim();
     const submitBtn = event.target.querySelector('.waitlist-btn');
     
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        document.getElementById('waitlistErrorMsg').textContent = 'Please enter a valid email address.';
+        document.getElementById('waitlistError').style.display = 'block';
+        setTimeout(() => { document.getElementById('waitlistError').style.display = 'none'; }, 3000);
+        return;
+    }
+    
+    // Hide any previous error
+    document.getElementById('waitlistError').style.display = 'none';
+    
     // Disable button while submitting
     submitBtn.disabled = true;
     submitBtn.textContent = 'Submitting...';
@@ -1604,11 +1616,30 @@ async function handleWaitlistSubmit(event) {
     }
     
     try {
+        // Check if email already exists
+        const { data: existing } = await supabaseClient
+            .from('waitlist')
+            .select('email')
+            .eq('email', email)
+            .limit(1);
+        
+        if (existing && existing.length > 0) {
+            document.getElementById('waitlistForm').style.display = 'none';
+            document.getElementById('waitlistAlready').style.display = 'flex';
+            return;
+        }
+        
         const { data, error } = await supabaseClient
             .from('waitlist')
             .insert([{ name: name, email: email }]);
         
         if (error) {
+            // Handle unique constraint violation
+            if (error.code === '23505') {
+                document.getElementById('waitlistForm').style.display = 'none';
+                document.getElementById('waitlistAlready').style.display = 'flex';
+                return;
+            }
             console.error('Supabase error details:', error.message, error.code, error.details);
             throw error;
         }
@@ -1623,7 +1654,8 @@ async function handleWaitlistSubmit(event) {
         console.error('Waitlist signup error:', err);
         submitBtn.disabled = false;
         submitBtn.textContent = 'Notify Me';
-        alert('Something went wrong: ' + (err.message || 'Please try again.'));
+        document.getElementById('waitlistErrorMsg').textContent = 'Something went wrong. Please try again.';
+        document.getElementById('waitlistError').style.display = 'block';
     }
 }
 
