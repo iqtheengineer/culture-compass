@@ -1572,8 +1572,8 @@ function showBlog(event) {
 
 
 // Waitlist Form Handler - Supabase
-const SUPABASE_URL = "https://aqgcbtizewkpyedhuhkgp.supabase.co";
-const SUPABASE_ANON_KEY = "esb_publishable_u2qobBnqAy8_yUJYytHoiA_ZTvV5dCC";
+const SUPABASE_URL = "https://qgcbtizewkpyedhuhkgp.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_u2qobBnqAy8_yUJYytHoiA_ZTvV5dCC";
 
 // CDN version exposes supabase under window.supabase
 let supabaseClient;
