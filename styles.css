@@ -1513,14 +1513,25 @@ body {
 }
 
 /* Quiz Scenario Styles */
+.scenario-option {
+    position: relative;
+    z-index: 5;
+}
+
 .scenario-option:hover:not(:disabled) {
     background: white !important;
-    border-color: #667eea !important;
+    border-color: var(--purple-primary) !important;
     transform: translateX(4px);
 }
 
 .scenario-option:disabled {
     cursor: not-allowed !important;
+    pointer-events: none;
+}
+
+.scenario-card {
+    position: relative;
+    z-index: 2;
 }
 
 /* Smooth scrolling for card back content */
@@ -3053,6 +3064,7 @@ body {
         transparent
     );
     transition: left 0.5s;
+    pointer-events: none;
 }
 
 .country-card:hover::after {
@@ -3739,4 +3751,17 @@ body.splash-active #onboardingScreen {
 .discord-icon {
     width: 24px;
     height: 24px;
+}
+
+
+/* Ensure modal quiz buttons are clickable */
+.card-modal-content button {
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.card-face {
+    position: relative;
+    z-index: 5;
 }
