@@ -1572,10 +1572,17 @@ function showBlog(event) {
 
 
 // Waitlist Form Handler - Supabase
-// Replace these with your Supabase project credentials
 const SUPABASE_URL = "https://aqgcbtizewkpyedhuhkgp.supabase.co";
 const SUPABASE_ANON_KEY = "esb_publishable_u2qobBnqAy8_yUJYytHoiA_ZTvV5dCC";
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// CDN version exposes supabase under window.supabase
+let supabaseClient;
+try {
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    console.log('Supabase client initialized successfully');
+} catch (e) {
+    console.error('Failed to initialize Supabase:', e);
+}
 
 async function handleWaitlistSubmit(event) {
     event.preventDefault();
@@ -1588,12 +1595,25 @@ async function handleWaitlistSubmit(event) {
     submitBtn.disabled = true;
     submitBtn.textContent = 'Submitting...';
     
+    if (!supabaseClient) {
+        console.error('Supabase client not initialized');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Notify Me';
+        alert('Connection error. Please try again later.');
+        return;
+    }
+    
     try {
         const { data, error } = await supabaseClient
             .from('waitlist')
             .insert([{ name: name, email: email }]);
         
-        if (error) throw error;
+        if (error) {
+            console.error('Supabase error details:', error.message, error.code, error.details);
+            throw error;
+        }
+        
+        console.log('Waitlist signup successful:', data);
         
         // Show success message
         document.getElementById('waitlistForm').style.display = 'none';
@@ -1603,7 +1623,7 @@ async function handleWaitlistSubmit(event) {
         console.error('Waitlist signup error:', err);
         submitBtn.disabled = false;
         submitBtn.textContent = 'Notify Me';
-        alert('Something went wrong. Please try again.');
+        alert('Something went wrong: ' + (err.message || 'Please try again.'));
     }
 }
 
