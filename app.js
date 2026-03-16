@@ -1571,25 +1571,40 @@ function showBlog(event) {
 }
 
 
-// Waitlist Form Handler
-function handleWaitlistSubmit(event) {
+// Waitlist Form Handler - Supabase
+// Replace these with your Supabase project credentials
+const SUPABASE_URL = "https://aqgcbtizewkpyedhuhkgp.supabase.co";
+const SUPABASE_ANON_KEY = "esb_publishable_u2qobBnqAy8_yUJYytHoiA_ZTvV5dCC";
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+async function handleWaitlistSubmit(event) {
     event.preventDefault();
     
-    const name = document.getElementById('waitlistName').value;
-    const email = document.getElementById('waitlistEmail').value;
+    const name = document.getElementById('waitlistName').value.trim();
+    const email = document.getElementById('waitlistEmail').value.trim();
+    const submitBtn = event.target.querySelector('.waitlist-btn');
     
-    // Here you would typically send this data to your backend/email service
-    // For now, we'll just show a success message
-    console.log('Waitlist signup:', { name, email });
+    // Disable button while submitting
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
     
-    // Hide the form and show success message
-    document.getElementById('waitlistForm').style.display = 'none';
-    document.getElementById('waitlistSuccess').style.display = 'flex';
-    
-    // Optional: Reset form after a delay
-    setTimeout(() => {
-        document.getElementById('waitlistForm').reset();
-    }, 1000);
+    try {
+        const { data, error } = await supabaseClient
+            .from('waitlist')
+            .insert([{ name: name, email: email }]);
+        
+        if (error) throw error;
+        
+        // Show success message
+        document.getElementById('waitlistForm').style.display = 'none';
+        document.getElementById('waitlistSuccess').style.display = 'flex';
+        
+    } catch (err) {
+        console.error('Waitlist signup error:', err);
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Notify Me';
+        alert('Something went wrong. Please try again.');
+    }
 }
 
 
