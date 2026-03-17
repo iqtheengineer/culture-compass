@@ -13,6 +13,7 @@
         gtag('config', 'G-96R4YS5L0E');
     </script>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 <body>
@@ -140,91 +141,128 @@
 
             <!-- Countries Section -->
             <div id="countriesSection">
-                <!-- Hero Section - Two Column Split -->
+                <!-- Hero Section -->
                 <div class="wise-hero">
                     <div class="hero-container-split">
                         <!-- LEFT SIDE -->
                         <div class="hero-left">
-                            <div class="hero-tagline">Travel Smart. Travel Respectfully.</div>
-                            <h1 class="hero-headline">Navigate Culture with Confidence.</h1>
-                            <p class="hero-subheadline">Real-time cultural insights, local etiquette, currency guidance, and safety awareness — all in one intelligent travel companion.</p>
-                            
-                            <p class="trust-line">Designed for responsible global travelers.</p>
+                            <h1 class="hero-headline">LEARN THE<br>CULTURE<br>AS YOU GO</h1>
+                            <p class="hero-subheadline">Real-time cultural insights, local etiquette, and safety awareness — all in one intelligent travel companion.</p>
+                            <a href="#exploreGrid" class="hero-cta-btn">Start exploring</a>
                         </div>
                         
-                        <!-- RIGHT SIDE - Phone Mockup -->
+                        <!-- RIGHT SIDE - Feature Card Slideshow -->
                         <div class="hero-right">
-                            <div class="phone-frame">
-                                <div class="phone-notch"></div>
-                                <div class="phone-screen">
-                                    <!-- Slide 1: Country Selection -->
-                                    <div class="phone-slide active" data-slide="1">
-                                        <div class="mock-nav">
-                                            <span class="mock-nav-title">Choose a Country</span>
+                            <div class="hero-feature-card">
+                                <!-- Slide 1: Select a Country -->
+                                <div class="feature-slide active" data-fslide="1">
+                                    <div class="feature-card-header">
+                                        <span class="feature-card-step">Step 1</span>
+                                        <span class="feature-card-header-text">CHOOSE A COUNTRY</span>
+                                    </div>
+                                    <div class="feature-card-body">
+                                        <div class="feature-slide-grid">
+                                            <div class="feature-slide-country">
+                                                <span class="feature-slide-flag">🇯🇵</span>
+                                                <span class="feature-slide-name">Japan</span>
+                                            </div>
+                                            <div class="feature-slide-country">
+                                                <span class="feature-slide-flag">🇩🇪</span>
+                                                <span class="feature-slide-name">Germany</span>
+                                            </div>
+                                            <div class="feature-slide-country selected">
+                                                <span class="feature-slide-flag">🇹🇭</span>
+                                                <span class="feature-slide-name">Thailand</span>
+                                            </div>
+                                            <div class="feature-slide-country">
+                                                <span class="feature-slide-flag">🇲🇽</span>
+                                                <span class="feature-slide-name">Mexico</span>
+                                            </div>
+                                            <div class="feature-slide-country">
+                                                <span class="feature-slide-flag">🇦🇷</span>
+                                                <span class="feature-slide-name">Argentina</span>
+                                            </div>
+                                            <div class="feature-slide-country">
+                                                <span class="feature-slide-flag">🇲🇦</span>
+                                                <span class="feature-slide-name">Morocco</span>
+                                            </div>
                                         </div>
-                                        <div class="mock-country-grid">
-                                            <div class="mock-country-item">
-                                                <div class="mock-country-flag">🇯🇵</div>
-                                                <div class="mock-country-name">Japan</div>
-                                            </div>
-                                            <div class="mock-country-item">
-                                                <div class="mock-country-flag">🇩🇪</div>
-                                                <div class="mock-country-name">Germany</div>
-                                            </div>
-                                            <div class="mock-country-item">
-                                                <div class="mock-country-flag">🇹🇭</div>
-                                                <div class="mock-country-name">Thailand</div>
-                                            </div>
-                                            <div class="mock-country-item highlighted">
-                                                <div class="mock-country-flag">🇲🇽</div>
-                                                <div class="mock-country-name">Mexico</div>
-                                            </div>
+                                        <div class="feature-slide-preview">
+                                            <div class="feature-slide-preview-img" style="background-image: url('https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=400&h=180&fit=crop')"></div>
+                                            <div class="feature-slide-preview-label">🇹🇭 Thailand selected</div>
                                         </div>
                                     </div>
+                                </div>
 
-                                    <!-- Slide 2: Country Card with Image -->
-                                    <div class="phone-slide" data-slide="2">
-                                        <div class="mock-country-header">
-                                            <div class="mock-country-image" style="background-image: url('https://images.unsplash.com/photo-1518638150340-f706e86654de?w=400&h=200&fit=crop')"></div>
-                                            <div class="mock-country-info">
-                                                <span class="mock-flag-large">🇲🇽</span>
-                                                <span class="mock-country-title">Mexico</span>
+                                <!-- Slide 2: Country Card Info -->
+                                <div class="feature-slide" data-fslide="2">
+                                    <div class="feature-card-header">
+                                        <span class="feature-card-step">Step 2</span>
+                                        <span class="feature-card-header-text">EXPLORE THE CULTURE</span>
+                                    </div>
+                                    <div class="feature-card-body">
+                                        <div class="feature-card-country-row">
+                                            <div class="feature-card-flag-group">
+                                                <span class="feature-card-flag">🇹🇭</span>
+                                                <span class="feature-card-country-label">Thailand</span>
+                                            </div>
+                                            <span class="feature-card-change-btn">Change</span>
+                                        </div>
+                                        <div class="feature-card-divider"></div>
+                                        <div class="feature-card-section">
+                                            <span class="feature-card-section-label">Cultural Do's</span>
+                                            <div class="feature-card-tips">
+                                                <div class="feature-card-tip">✓ Wai greeting (hands together)</div>
+                                                <div class="feature-card-tip">✓ Remove shoes at temples</div>
+                                                <div class="feature-card-tip">✓ Smile often</div>
                                             </div>
                                         </div>
-                                        <div class="mock-card cultural-tips">
-                                            <div class="mock-card-title">✓ Cultural Do's</div>
-                                            <div class="mock-tip">• Greet warmly with handshake</div>
-                                            <div class="mock-tip">• Try street food</div>
-                                            <div class="mock-tip">• Learn basic Spanish</div>
+                                        <div class="feature-card-divider"></div>
+                                        <div class="feature-card-section">
+                                            <span class="feature-card-section-label">Cultural Don'ts</span>
+                                            <div class="feature-card-tips">
+                                                <div class="feature-card-tip danger">✗ Don't touch anyone's head</div>
+                                                <div class="feature-card-tip danger">✗ Don't point feet at people</div>
+                                            </div>
                                         </div>
-                                        <div class="mock-card currency">
-                                            <div class="mock-card-title">💱 Currency</div>
-                                            <div class="mock-currency-row">
-                                                <span>1 USD =</span>
-                                                <span>$17.20 MXN</span>
+                                        <div class="feature-card-divider"></div>
+                                        <div class="feature-card-row">
+                                            <span class="feature-card-icon">💱</span>
+                                            <div>
+                                                <div class="feature-card-row-label">Currency</div>
+                                                <div class="feature-card-row-value">Thai Baht (฿)</div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                    <!-- Slide 3: Cultural Tips Detail -->
-                                    <div class="phone-slide" data-slide="3">
-                                        <div class="mock-header">
-                                            <span class="mock-flag">🇲🇽</span>
-                                            <span class="mock-country">Mexico</span>
+                                <!-- Slide 3: Quiz -->
+                                <div class="feature-slide" data-fslide="3">
+                                    <div class="feature-card-header">
+                                        <span class="feature-card-step">Step 3</span>
+                                        <span class="feature-card-header-text">TEST YOUR KNOWLEDGE</span>
+                                    </div>
+                                    <div class="feature-card-body">
+                                        <div class="feature-quiz-label">🇹🇭 Thailand — Cultural Quiz</div>
+                                        <div class="feature-quiz-question">A monk sits next to you on the bus. What do you do?</div>
+                                        <div class="feature-quiz-options">
+                                            <div class="feature-quiz-option correct">A) Offer your seat ✓</div>
+                                            <div class="feature-quiz-option">B) Stay seated and smile</div>
+                                            <div class="feature-quiz-option">C) Move to another seat</div>
                                         </div>
-                                        <div class="mock-section-title">Do's & Don'ts</div>
-                                        <div class="mock-card cultural-tips">
-                                            <div class="mock-card-title">✓ Do's</div>
-                                            <div class="mock-tip">• Be patient with timing</div>
-                                            <div class="mock-tip">• Tip 10-15% at restaurants</div>
-                                            <div class="mock-tip">• Greet warmly</div>
-                                        </div>
-                                        <div class="mock-card alert">
-                                            <div class="mock-card-title">✗ Don'ts</div>
-                                            <div class="mock-alert-text">• Don't drink tap water</div>
-                                            <div class="mock-alert-text">• Don't be overly punctual</div>
+                                        <div class="feature-quiz-result">
+                                            <span class="feature-quiz-result-icon">🌍</span>
+                                            <span class="feature-quiz-result-title">Cultural Expert!</span>
+                                            <span class="feature-quiz-result-score">Score: 3/3</span>
                                         </div>
                                     </div>
+                                </div>
+
+                                <!-- Slide dots -->
+                                <div class="feature-slide-dots">
+                                    <span class="feature-dot active"></span>
+                                    <span class="feature-dot"></span>
+                                    <span class="feature-dot"></span>
                                 </div>
                             </div>
                         </div>

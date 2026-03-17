@@ -1880,3 +1880,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 4000); // Start after splash screen completes
 });
+
+
+// ===== FEATURE CARD SLIDESHOW =====
+document.addEventListener('DOMContentLoaded', () => {
+    const featureSlides = document.querySelectorAll('.feature-slide');
+    const featureDots = document.querySelectorAll('.feature-dot');
+    let currentFeatureSlide = 0;
+    const featureSlideInterval = 4000;
+    
+    function showFeatureSlide(index) {
+        featureSlides.forEach(slide => slide.classList.remove('active'));
+        featureDots.forEach(dot => dot.classList.remove('active'));
+        
+        if (featureSlides[index]) featureSlides[index].classList.add('active');
+        if (featureDots[index]) featureDots[index].classList.add('active');
+        
+        currentFeatureSlide = index;
+    }
+    
+    function nextFeatureSlide() {
+        const next = (currentFeatureSlide + 1) % featureSlides.length;
+        showFeatureSlide(next);
+    }
+    
+    // Click on dots to navigate
+    featureDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showFeatureSlide(index);
+            clearInterval(featureAutoPlay);
+            featureAutoPlay = setInterval(nextFeatureSlide, featureSlideInterval);
+        });
+    });
+    
+    // Auto-play after splash screen
+    let featureAutoPlay;
+    setTimeout(() => {
+        if (featureSlides.length > 0) {
+            showFeatureSlide(0);
+            featureAutoPlay = setInterval(nextFeatureSlide, featureSlideInterval);
+        }
+    }, 4000);
+});
