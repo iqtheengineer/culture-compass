@@ -4396,13 +4396,9 @@ body.splash-active #onboardingScreen {
 
 
 /* Prevent horizontal overflow on mobile */
-#appContainer,
-#exploreView,
-#countriesSection,
-.wise-hero,
-.hero-container-split,
-.explore-container,
-.collect-banner {
+html,
+body,
+#appContainer {
     max-width: 100vw;
     overflow-x: hidden;
 }
