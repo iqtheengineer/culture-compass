@@ -4375,17 +4375,17 @@ body.splash-active #onboardingScreen {
 
 /* Collect banner scroll animation */
 .collect-banner {
-    transform: translateX(-80px);
+    transform: translateY(30px);
     opacity: 0;
     transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s ease;
 }
 
 .collect-banner.slide-in {
-    transform: translateX(0);
+    transform: translateY(0);
     opacity: 1;
 }
 
 .collect-banner.slide-out {
-    transform: translateX(80px);
+    transform: translateY(-30px);
     opacity: 0;
 }
