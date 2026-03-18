@@ -2262,7 +2262,7 @@ body {
 /* Hero Two-Column Split Layout */
 .wise-hero {
     background: #ffffff;
-    padding: 80px 20px 80px;
+    padding: 80px 20px 120px;
     border-bottom: 1px solid var(--wise-border);
 }
 
@@ -4265,4 +4265,127 @@ body.splash-active #onboardingScreen {
     font-weight: 600;
     color: var(--wise-navy);
     background: #f9fafb;
+}
+
+
+/* ===== COLLECT THE WORLD BANNER ===== */
+.collect-banner {
+    background: var(--wise-dark-navy);
+    padding: 0;
+    margin: 0;
+    margin-top: 80px;
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.collect-banner-inner {
+    text-align: center;
+    padding: 80px 40px 60px;
+    position: relative;
+    z-index: 1;
+}
+
+.collect-banner-globe {
+    font-size: 6rem;
+    margin-bottom: 10px;
+    display: inline-block;
+    animation: floatGlobe 4s ease-in-out infinite;
+    filter: drop-shadow(0 10px 30px rgba(124, 58, 237, 0.3));
+}
+
+@keyframes floatGlobe {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.collect-banner-headline {
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: var(--purple-light);
+    line-height: 0.95;
+    letter-spacing: -3px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+}
+
+.collect-banner-sub {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.7;
+    max-width: 550px;
+    margin: 0 auto 32px;
+}
+
+.collect-banner-btn {
+    display: inline-block;
+    padding: 14px 32px;
+    background: transparent;
+    color: white;
+    text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.collect-banner-btn:hover {
+    background: var(--purple-primary);
+    border-color: var(--purple-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+}
+
+@media (max-width: 768px) {
+    .collect-banner {
+        margin: 0;
+        border-radius: 0;
+    }
+    
+    .collect-banner-inner {
+        padding: 60px 24px 48px;
+    }
+    
+    .collect-banner-headline {
+        font-size: 3rem;
+        letter-spacing: -2px;
+    }
+    
+    .collect-banner-globe {
+        font-size: 4rem;
+    }
+    
+    .collect-banner-sub {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .collect-banner {
+        margin: 0;
+    }
+    
+    .collect-banner-headline {
+        font-size: 2.5rem;
+    }
+}
+
+
+/* Collect banner scroll animation */
+.collect-banner {
+    transform: translateX(-80px);
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s ease;
+}
+
+.collect-banner.slide-in {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.collect-banner.slide-out {
+    transform: translateX(80px);
+    opacity: 0;
 }

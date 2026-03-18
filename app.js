@@ -1922,3 +1922,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 4000);
 });
+
+
+// ===== COLLECT BANNER SCROLL ANIMATION =====
+document.addEventListener('DOMContentLoaded', () => {
+    const banner = document.querySelector('.collect-banner');
+    if (!banner) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                banner.classList.add('slide-in');
+                banner.classList.remove('slide-out');
+            } else if (entry.boundingClientRect.top < 0) {
+                banner.classList.remove('slide-in');
+                banner.classList.add('slide-out');
+            } else {
+                banner.classList.remove('slide-in');
+                banner.classList.remove('slide-out');
+            }
+        });
+    }, { threshold: 0.15 });
+    
+    observer.observe(banner);
+});
