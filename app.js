@@ -1021,15 +1021,6 @@ function renderCardBack() {
             <div style="max-height: 70vh; overflow-y: auto; padding-right: 10px;">
                 <h2 style="font-size: 1.8rem; margin-bottom: 10px; color: #333;">${country.flag} ${country.name}</h2>
                 
-                <div style="display: flex; gap: 15px; margin-bottom: 25px; flex-wrap: wrap;">
-                    <div style="background: #fee; padding: 8px 16px; border-radius: 8px; font-size: 0.9rem;">
-                        <strong>Risk Level:</strong> ${country.riskLevel}
-                    </div>
-                    <div style="background: #eff6ff; padding: 8px 16px; border-radius: 8px; font-size: 0.9rem;">
-                        <strong>Briefing:</strong> ${country.briefingTime}
-                    </div>
-                </div>
-                
                 <!-- ESSENTIAL INFORMATION -->
                 <div style="margin-bottom: 25px; background: #fff3cd; padding: 15px; border-radius: 12px; border-left: 4px solid #ffc107;">
                     <h3 style="font-size: 1.2rem; color: #856404; margin-bottom: 12px;">⚠️ Critical Cultural Offenses to Avoid</h3>
