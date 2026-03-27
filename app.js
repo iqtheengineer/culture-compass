@@ -6,6 +6,7 @@ const countries = [
         region: "Asia",
         language: "Japanese",
         currency: "Japanese Yen (¥)",
+        rarity: "Rare",
         riskLevel: "🔴 High Nuance",
         briefingTime: "5 Minutes",
         culturalSnapshot: {
@@ -59,6 +60,7 @@ const countries = [
         region: "Europe",
         language: "German",
         currency: "Euro (€)",
+        rarity: "Common",
         riskLevel: "🟢 Low Risk",
         briefingTime: "3 Minutes",
         culturalSnapshot: {
@@ -105,7 +107,6 @@ const countries = [
         ],
         info: "Punctuality is critical. Cash still common. Quiet Sundays (shops closed). Rules are taken very seriously."
     },
-,
     {
         name: "Thailand",
         flag: "🇹🇭",
@@ -113,6 +114,7 @@ const countries = [
         region: "Asia",
         language: "Thai",
         currency: "Thai Baht (฿)",
+        rarity: "Rare",
         riskLevel: "🟡 Moderate",
         briefingTime: "4 Minutes",
         culturalSnapshot: {
@@ -159,7 +161,6 @@ const countries = [
         ],
         info: "Dress modestly at temples. Bargaining is common at markets. Smile often! The monarchy is deeply revered."
     },
-,
     {
         name: "Vietnam",
         flag: "🇻🇳",
@@ -167,6 +168,7 @@ const countries = [
         region: "Asia",
         language: "Vietnamese",
         currency: "Vietnamese Dong (₫)",
+        rarity: "Epic",
         riskLevel: "🟡 Moderate",
         briefingTime: "4 Minutes",
         culturalSnapshot: {
@@ -213,7 +215,6 @@ const countries = [
         ],
         info: "Cross streets slowly and steadily. Street food is incredible. Cash preferred. Very affordable!"
     },
-,
     {
         name: "Indonesia",
         flag: "🇮🇩",
@@ -221,6 +222,7 @@ const countries = [
         region: "Asia",
         language: "Indonesian (Bahasa)",
         currency: "Indonesian Rupiah (Rp)",
+        rarity: "Rare",
         riskLevel: "🟡 Moderate",
         briefingTime: "4 Minutes",
         culturalSnapshot: {
@@ -267,7 +269,6 @@ const countries = [
         ],
         info: "Use right hand only. Dress modestly. 'Jam karet' means flexible timing. Smile and be patient!"
     },
-,
     {
         name: "Turkey",
         flag: "🇹🇷",
@@ -275,6 +276,7 @@ const countries = [
         region: "Asia",
         language: "Turkish",
         currency: "Turkish Lira (₺)",
+        rarity: "Epic",
         riskLevel: "🟡 Moderate",
         briefingTime: "4 Minutes",
         culturalSnapshot: {
@@ -321,7 +323,6 @@ const countries = [
         ],
         info: "Bargain at bazaars. Accept tea offers. Dress modestly at religious sites. Hospitality is incredible."
     },
-,
     {
         name: "Mexico",
         flag: "🇲🇽",
@@ -329,6 +330,7 @@ const countries = [
         region: "Americas",
         language: "Spanish",
         currency: "Mexican Peso ($)",
+        rarity: "Common",
         riskLevel: "🟡 Moderate",
         briefingTime: "4 Minutes",
         culturalSnapshot: {
@@ -375,7 +377,6 @@ const countries = [
         ],
         info: "Learn Spanish basics. Tip 10-15%. Street food is amazing and safe in busy areas. Don't drink tap water."
     },
-,
     {
         name: "Argentina",
         flag: "🇦🇷",
@@ -383,6 +384,7 @@ const countries = [
         region: "Americas",
         language: "Spanish",
         currency: "Argentine Peso ($)",
+        rarity: "Rare",
         riskLevel: "🟡 Moderate",
         briefingTime: "4 Minutes",
         culturalSnapshot: {
@@ -429,7 +431,6 @@ const countries = [
         ],
         info: "Dinner after 9pm. Tipping 10%. Learn tango basics. Bring USD for better exchange rates. Football is religion."
     },
-,
     {
         name: "Morocco",
         flag: "🇲🇦",
@@ -437,6 +438,7 @@ const countries = [
         region: "Africa",
         language: "Arabic & French",
         currency: "Moroccan Dirham (MAD)",
+        rarity: "Epic",
         riskLevel: "🟡 Moderate",
         briefingTime: "4 Minutes",
         culturalSnapshot: {
@@ -483,7 +485,6 @@ const countries = [
         ],
         info: "Bargaining is expected. Respect Ramadan. Mint tea is a social ritual. Dress modestly."
     },
-,
     {
         name: "Portugal",
         flag: "🇵🇹",
@@ -491,6 +492,7 @@ const countries = [
         region: "Europe",
         language: "Portuguese",
         currency: "Euro (€)",
+        rarity: "Common",
         riskLevel: "🟢 Low Risk",
         briefingTime: "3 Minutes",
         culturalSnapshot: {
@@ -555,8 +557,8 @@ let selectedInterests = userProfile.interests;
 
 // Initialize App
 function init() {
-    // Skip onboarding and go directly to explore page
-    showApp();
+    // Go directly to explore page - single page app
+    showScreen('appContainer');
     switchView('explore');
     
     // Set default user profile
@@ -574,6 +576,7 @@ function init() {
 // Enhanced Welcome Experience
 function initializeWelcomeExperience() {
     startWelcomeAnimations();
+    startCarousel();
     startTaglineRotation();
     addInteractiveElements();
 }
@@ -606,6 +609,49 @@ function startWelcomeAnimations() {
 // Enhanced tagline rotation
 let taglineIndex = 0;
 let taglineInterval;
+
+// Feature Carousel
+let currentSlide = 0;
+let carouselInterval;
+
+function startCarousel() {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dots .dot');
+    
+    if (slides.length === 0) return;
+    
+    carouselInterval = setInterval(() => {
+        goToSlide((currentSlide + 1) % slides.length);
+    }, 4000); // Change slide every 4 seconds
+}
+
+function goToSlide(index) {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dots .dot');
+    
+    if (slides.length === 0) return;
+    
+    // Remove active class from current slide
+    slides[currentSlide].classList.remove('active');
+    slides[currentSlide].classList.add('prev');
+    dots[currentSlide].classList.remove('active');
+    
+    // Update current slide
+    currentSlide = index;
+    
+    // Add active class to new slide
+    setTimeout(() => {
+        slides.forEach(slide => slide.classList.remove('prev'));
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+    }, 50);
+}
+
+function stopCarousel() {
+    if (carouselInterval) {
+        clearInterval(carouselInterval);
+    }
+}
 
 function startTaglineRotation() {
     const taglines = document.querySelectorAll('.tagline-text');
@@ -661,6 +707,7 @@ function showScreen(screenId) {
 // Onboarding Flow
 function showLocationPrompt() {
     stopTaglineRotation();
+    stopCarousel();
     showScreen('locationScreen');
 }
 
@@ -845,14 +892,8 @@ function createCountryCard(country) {
     card.className = 'country-card';
     card.onclick = () => openCardModal(country);
     
-    const status = cardStatus[country.name] || 'locked';
-    const badgeClass = status === 'gold' ? 'badge-gold' : status === 'silver' ? 'badge-silver' : 'badge-bronze';
-    const badgeText = status === 'gold' ? '🥇 Visited' : status === 'silver' ? '🥈 Downloaded' : status === 'bronze' ? '🥉 Saved' : '';
-    
     card.innerHTML = `
-        <div class="card-image" style="background-image: url('${country.image}')">
-            ${status !== 'locked' ? `<div class="card-badge ${badgeClass}">${badgeText}</div>` : ''}
-        </div>
+        <div class="card-image" style="background-image: url('${country.image}')"></div>
         <div class="card-info">
             <div class="card-country-name">${country.flag} ${country.name}</div>
             <div class="card-region">${country.region}</div>
@@ -931,6 +972,11 @@ function openCardModal(country) {
     currentCard = country;
     isFlipped = false;
     
+    // Reset quiz score for this country so it starts fresh
+    const countryId = country.name.replace(/\s/g, '');
+    delete quizScores[countryId];
+    localStorage.setItem('quizScores', JSON.stringify(quizScores));
+    
     const modal = document.getElementById('cardModal');
     modal.classList.add('active');
     
@@ -952,26 +998,12 @@ function flipCard() {
 
 function renderCardFront() {
     const content = document.getElementById('cardFrontContent');
-    const status = cardStatus[currentCard.name] || 'locked';
     
     content.innerHTML = `
         <div class="card-image" style="background-image: url('${currentCard.image}'); height: 300px; border-radius: 15px; position: relative;">
             <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; background: rgba(0,0,0,0.7); padding: 15px; border-radius: 10px; color: white;">
                 <h2 style="font-size: 2rem; margin-bottom: 5px;">${currentCard.flag} ${currentCard.name}</h2>
                 <p style="font-size: 1.1rem; opacity: 0.9;">${currentCard.region}</p>
-            </div>
-        </div>
-        <div style="padding: 20px 0;">
-            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-                <button onclick="setCardStatus('bronze')" style="flex: 1; padding: 12px; border: 2px solid #cd7f32; background: ${status === 'bronze' ? '#cd7f32' : 'white'}; color: ${status === 'bronze' ? 'white' : '#cd7f32'}; border-radius: 10px; font-weight: 700; cursor: pointer;">
-                    🥉 Save
-                </button>
-                <button onclick="setCardStatus('silver')" style="flex: 1; padding: 12px; border: 2px solid #c0c0c0; background: ${status === 'silver' ? '#c0c0c0' : 'white'}; color: ${status === 'silver' ? 'white' : '#666'}; border-radius: 10px; font-weight: 700; cursor: pointer;">
-                    🥈 Download
-                </button>
-                <button onclick="setCardStatus('gold')" style="flex: 1; padding: 12px; border: 2px solid #ffd700; background: ${status === 'gold' ? '#ffd700' : 'white'}; color: #333; border-radius: 10px; font-weight: 700; cursor: pointer;">
-                    🥇 Visited
-                </button>
             </div>
         </div>
     `;
@@ -988,15 +1020,6 @@ function renderCardBack() {
         content.innerHTML = `
             <div style="max-height: 70vh; overflow-y: auto; padding-right: 10px;">
                 <h2 style="font-size: 1.8rem; margin-bottom: 10px; color: #333;">${country.flag} ${country.name}</h2>
-                
-                <div style="display: flex; gap: 15px; margin-bottom: 25px; flex-wrap: wrap;">
-                    <div style="background: #fee; padding: 8px 16px; border-radius: 8px; font-size: 0.9rem;">
-                        <strong>Risk Level:</strong> ${country.riskLevel}
-                    </div>
-                    <div style="background: #eff6ff; padding: 8px 16px; border-radius: 8px; font-size: 0.9rem;">
-                        <strong>Briefing:</strong> ${country.briefingTime}
-                    </div>
-                </div>
                 
                 <!-- ESSENTIAL INFORMATION -->
                 <div style="margin-bottom: 25px; background: #fff3cd; padding: 15px; border-radius: 12px; border-left: 4px solid #ffc107;">
@@ -1061,14 +1084,14 @@ function renderCardBack() {
                         </div>
                         
                         <div style="margin-bottom: 20px;">
-                            <h3 style="font-size: 1.2rem; color: #10b981; margin-bottom: 10px;">✅ All Do's</h3>
+                            <h3 style="font-size: 1.2rem; color: #10b981; margin-bottom: 10px;">✅ Do's</h3>
                             <ul style="list-style: none; padding: 0;">
                                 ${country.dos.map(item => `<li style="padding: 8px 0; color: #666; border-bottom: 1px solid #f0f0f0;">✓ ${item}</li>`).join('')}
                             </ul>
                         </div>
                         
                         <div style="margin-bottom: 25px;">
-                            <h3 style="font-size: 1.2rem; color: #ef4444; margin-bottom: 10px;">❌ All Don'ts</h3>
+                            <h3 style="font-size: 1.2rem; color: #ef4444; margin-bottom: 10px;">❌ Don'ts</h3>
                             <ul style="list-style: none; padding: 0;">
                                 ${country.donts.map(item => `<li style="padding: 8px 0; color: #666; border-bottom: 1px solid #f0f0f0;">${item}</li>`).join('')}
                             </ul>
@@ -1121,8 +1144,11 @@ function renderCardBack() {
                                     </div>
                                 `).join('')}
                             </div>
-                            <div id="quizScore-${country.name.replace(/\s/g, '')}" style="display: none; margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.2); border-radius: 10px; text-align: center; font-size: 1.1rem; font-weight: 700;">
-                                🎉 Cultural IQ Score: <span id="scoreValue-${country.name.replace(/\s/g, '')}">0</span>/${country.scenarios.length} - Ready to Land!
+                            <div id="quizScore-${country.name.replace(/\s/g, '')}" style="display: none; margin-top: 20px; padding: 20px; border-radius: 12px; text-align: center;">
+                                <div id="travelerLevel-${country.name.replace(/\s/g, '')}" style="font-size: 2rem; margin-bottom: 8px;"></div>
+                                <div id="travelerTitle-${country.name.replace(/\s/g, '')}" style="font-size: 1.2rem; font-weight: 700; margin-bottom: 6px;"></div>
+                                <div style="font-size: 0.95rem; opacity: 0.9;">Score: <span id="scoreValue-${country.name.replace(/\s/g, '')}">0</span>/${country.scenarios.length}</div>
+                                <div id="travelerMsg-${country.name.replace(/\s/g, '')}" style="font-size: 0.85rem; margin-top: 8px; opacity: 0.8;"></div>
                             </div>
                         </div>
                     </div>
@@ -1191,6 +1217,10 @@ function answerScenario(countryId, scenarioIdx, selectedOption) {
     if (!country || !country.scenarios) return;
     
     const scenario = country.scenarios[scenarioIdx];
+    
+    // Prevent answering the same question twice
+    if (quizScores[countryId] && quizScores[countryId].answered.includes(scenarioIdx)) return;
+    
     const isCorrect = selectedOption === scenario.correct;
     
     // Disable all options for this scenario
@@ -1242,20 +1272,52 @@ function answerScenario(countryId, scenarioIdx, selectedOption) {
         quizScores[countryId] = { answered: [], correct: 0 };
     }
     
-    if (!quizScores[countryId].answered.includes(scenarioIdx)) {
-        quizScores[countryId].answered.push(scenarioIdx);
-        if (isCorrect) {
-            quizScores[countryId].correct++;
-        }
-        localStorage.setItem('quizScores', JSON.stringify(quizScores));
+    quizScores[countryId].answered.push(scenarioIdx);
+    if (isCorrect) {
+        quizScores[countryId].correct++;
     }
+    localStorage.setItem('quizScores', JSON.stringify(quizScores));
     
-    // Check if all scenarios answered
+    // Only show score after ALL 3 questions are answered
     if (quizScores[countryId].answered.length === country.scenarios.length) {
         const scoreDisplay = document.getElementById(`quizScore-${countryId}`);
         const scoreValue = document.getElementById(`scoreValue-${countryId}`);
+        const travelerLevel = document.getElementById(`travelerLevel-${countryId}`);
+        const travelerTitle = document.getElementById(`travelerTitle-${countryId}`);
+        const travelerMsg = document.getElementById(`travelerMsg-${countryId}`);
+        
         if (scoreDisplay && scoreValue) {
-            scoreValue.textContent = quizScores[countryId].correct;
+            const correct = quizScores[countryId].correct;
+            scoreValue.textContent = correct;
+            
+            // Determine traveler level
+            let level, title, msg, bg;
+            if (correct === 0) {
+                level = '🧳';
+                title = 'Tourist';
+                msg = 'Time to study up before your trip!';
+                bg = 'rgba(239, 68, 68, 0.25)';
+            } else if (correct === 1) {
+                level = '🗺️';
+                title = 'Explorer';
+                msg = 'You\'re getting there — keep learning!';
+                bg = 'rgba(245, 158, 11, 0.25)';
+            } else if (correct === 2) {
+                level = '✈️';
+                title = 'Traveler';
+                msg = 'Nice work — you\'re almost ready to land!';
+                bg = 'rgba(59, 130, 246, 0.25)';
+            } else {
+                level = '🌍';
+                title = 'Cultural Expert';
+                msg = 'Perfect score! You\'re ready to explore like a local!';
+                bg = 'rgba(16, 185, 129, 0.25)';
+            }
+            
+            travelerLevel.textContent = level;
+            travelerTitle.textContent = title;
+            travelerMsg.textContent = msg;
+            scoreDisplay.style.background = bg;
             scoreDisplay.style.display = 'block';
         }
     }
@@ -1504,3 +1566,374 @@ function saveData() {
 
 // Start App
 init();
+
+
+// Blog Navigation
+function showExplore(event) {
+    if (event) event.preventDefault();
+    
+    // Toggle sections
+    document.getElementById('countriesSection').style.display = 'block';
+    document.getElementById('blogSection').style.display = 'none';
+    
+    // Update nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+    });
+    event.target.classList.add('active');
+}
+
+function showBlog(event) {
+    if (event) event.preventDefault();
+    
+    // Toggle sections
+    document.getElementById('countriesSection').style.display = 'none';
+    document.getElementById('blogSection').style.display = 'block';
+    
+    // Update nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+    });
+    event.target.classList.add('active');
+}
+
+
+// Waitlist Form Handler - Supabase
+const SUPABASE_URL = "https://qgcbtizewkpyedhuhkgp.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_u2qobBnqAy8_yUJYytHoiA_ZTvV5dCC";
+
+// CDN version exposes supabase under window.supabase
+let supabaseClient;
+try {
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    console.log('Supabase client initialized successfully');
+} catch (e) {
+    console.error('Failed to initialize Supabase:', e);
+}
+
+async function handleWaitlistSubmit(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('waitlistName').value.trim();
+    const email = document.getElementById('waitlistEmail').value.trim();
+    const submitBtn = event.target.querySelector('.waitlist-btn');
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        document.getElementById('waitlistErrorMsg').textContent = 'Please enter a valid email address.';
+        document.getElementById('waitlistError').style.display = 'block';
+        setTimeout(() => { document.getElementById('waitlistError').style.display = 'none'; }, 3000);
+        return;
+    }
+    
+    // Hide any previous error
+    document.getElementById('waitlistError').style.display = 'none';
+    
+    // Disable button while submitting
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+    
+    if (!supabaseClient) {
+        console.error('Supabase client not initialized');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Notify Me';
+        alert('Connection error. Please try again later.');
+        return;
+    }
+    
+    try {
+        // Check if email already exists
+        const { data: existing } = await supabaseClient
+            .from('waitlist')
+            .select('email')
+            .eq('email', email)
+            .limit(1);
+        
+        if (existing && existing.length > 0) {
+            document.getElementById('waitlistForm').style.display = 'none';
+            document.getElementById('waitlistAlready').style.display = 'flex';
+            return;
+        }
+        
+        const { data, error } = await supabaseClient
+            .from('waitlist')
+            .insert([{ name: name, email: email }]);
+        
+        if (error) {
+            // Handle unique constraint violation
+            if (error.code === '23505') {
+                document.getElementById('waitlistForm').style.display = 'none';
+                document.getElementById('waitlistAlready').style.display = 'flex';
+                return;
+            }
+            console.error('Supabase error details:', error.message, error.code, error.details);
+            throw error;
+        }
+        
+        console.log('Waitlist signup successful:', data);
+        
+        // Show success message
+        document.getElementById('waitlistForm').style.display = 'none';
+        document.getElementById('waitlistSuccess').style.display = 'flex';
+        
+    } catch (err) {
+        console.error('Waitlist signup error:', err);
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Notify Me';
+        document.getElementById('waitlistErrorMsg').textContent = 'Something went wrong. Please try again.';
+        document.getElementById('waitlistError').style.display = 'block';
+    }
+}
+
+
+// ===== SCROLL ANIMATIONS =====
+// Intersection Observer for scroll-triggered animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const animateOnScroll = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+// Observe elements when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Add animation classes to elements
+    const countryCards = document.querySelectorAll('.country-card');
+    countryCards.forEach((card, index) => {
+        card.classList.add('fade-in-up');
+        animateOnScroll.observe(card);
+    });
+
+    const blogCards = document.querySelectorAll('.blog-card');
+    blogCards.forEach(card => {
+        animateOnScroll.observe(card);
+    });
+
+    // Parallax effect on scroll
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const scrolled = window.pageYOffset;
+                const parallaxElements = document.querySelectorAll('.hero-container-split');
+                
+                parallaxElements.forEach(element => {
+                    const speed = 0.5;
+                    element.style.transform = `translateY(${scrolled * speed}px)`;
+                });
+                
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+
+    // Add ripple effect to buttons
+    const buttons = document.querySelectorAll('.btn-primary, .waitlist-btn, .country-card');
+    buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.classList.add('ripple-effect');
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+        });
+    });
+});
+
+// Smooth scroll for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Add hover tilt effect to cards
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.country-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-12px) scale(1.03)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+        });
+    });
+});
+
+
+// ===== SPLASH SCREEN ANIMATION =====
+window.addEventListener('DOMContentLoaded', () => {
+    const splashScreen = document.getElementById('splashScreen');
+    const splashLogo = document.querySelector('.splash-logo');
+    const body = document.body;
+    
+    // Add class to hide main content
+    body.classList.add('splash-active');
+    
+    // After logo animation completes (1.5s), add pulse
+    setTimeout(() => {
+        if (splashLogo) {
+            splashLogo.classList.add('pulse');
+        }
+    }, 1500);
+    
+    // After 3s total, fade out splash screen
+    setTimeout(() => {
+        if (splashScreen) {
+            splashScreen.classList.remove('active');
+            splashScreen.classList.add('fade-out');
+        }
+        body.classList.remove('splash-active');
+    }, 3000);
+    
+    // Remove splash screen from DOM after fade out (3.8s total)
+    setTimeout(() => {
+        if (splashScreen) {
+            splashScreen.style.display = 'none';
+        }
+    }, 3800);
+});
+
+// Prevent splash screen on subsequent page loads (optional)
+// Uncomment if you only want splash on first visit
+/*
+if (sessionStorage.getItem('splashShown')) {
+    document.getElementById('splashScreen').style.display = 'none';
+    document.body.classList.remove('splash-active');
+} else {
+    sessionStorage.setItem('splashShown', 'true');
+}
+*/
+
+
+// ===== PHONE MOCKUP SLIDESHOW =====
+document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.phone-slide');
+    let currentSlide = 0;
+    const slideInterval = 3500; // 3.5 seconds per slide
+    
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            if (i === index) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.remove('active');
+            }
+        });
+    }
+    
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+    
+    // Start slideshow after splash screen
+    setTimeout(() => {
+        if (slides.length > 0) {
+            showSlide(0);
+            setInterval(nextSlide, slideInterval);
+        }
+    }, 4000); // Start after splash screen completes
+});
+
+
+// ===== FEATURE CARD SLIDESHOW =====
+document.addEventListener('DOMContentLoaded', () => {
+    const featureSlides = document.querySelectorAll('.feature-slide');
+    const featureDots = document.querySelectorAll('.feature-dot');
+    let currentFeatureSlide = 0;
+    const featureSlideInterval = 4000;
+    
+    function showFeatureSlide(index) {
+        featureSlides.forEach(slide => slide.classList.remove('active'));
+        featureDots.forEach(dot => dot.classList.remove('active'));
+        
+        if (featureSlides[index]) featureSlides[index].classList.add('active');
+        if (featureDots[index]) featureDots[index].classList.add('active');
+        
+        currentFeatureSlide = index;
+    }
+    
+    function nextFeatureSlide() {
+        const next = (currentFeatureSlide + 1) % featureSlides.length;
+        showFeatureSlide(next);
+    }
+    
+    // Click on dots to navigate
+    featureDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showFeatureSlide(index);
+            clearInterval(featureAutoPlay);
+            featureAutoPlay = setInterval(nextFeatureSlide, featureSlideInterval);
+        });
+    });
+    
+    // Auto-play after splash screen
+    let featureAutoPlay;
+    setTimeout(() => {
+        if (featureSlides.length > 0) {
+            showFeatureSlide(0);
+            featureAutoPlay = setInterval(nextFeatureSlide, featureSlideInterval);
+        }
+    }, 4000);
+});
+
+
+// ===== COLLECT BANNER SCROLL ANIMATION =====
+document.addEventListener('DOMContentLoaded', () => {
+    const banner = document.querySelector('.collect-banner');
+    if (!banner) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                banner.classList.add('slide-in');
+                banner.classList.remove('slide-out');
+            } else if (entry.boundingClientRect.top < 0) {
+                banner.classList.remove('slide-in');
+                banner.classList.add('slide-out');
+            } else {
+                banner.classList.remove('slide-in');
+                banner.classList.remove('slide-out');
+            }
+        });
+    }, { threshold: 0.15 });
+    
+    observer.observe(banner);
+});
