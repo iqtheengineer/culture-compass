@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.11.9 on win32)" generated="2026-03-27T15:45:40.615871" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Users\USER\Desktop\culture-compass\culture-compass\tests">
+<suite id="s1-s1" name="Blog" source="C:\Users\USER\Desktop\culture-compass\culture-compass\tests\Blog.robot">
+<test id="s1-s1-t1" name="robotframework_testing_selenium" line="10">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-03-27T15:45:41.023905" level="INFO">Opening browser 'chrome' to base url 'https://culturecompass.co/'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-03-27T15:45:41.023905" elapsed="5.462575"/>
+</kw>
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>${SELSPEED}</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2026-03-27T15:45:46.487480" elapsed="0.000997"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-03-27T15:45:46.492479" elapsed="0.562675"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//a[contains(.,'Blog')]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-27T15:45:47.057152" elapsed="2.320806"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-03-27T15:45:49.381961" level="INFO">Clicking element 'xpath=//a[contains(.,'Blog')]'.</msg>
+<arg>xpath=//a[contains(.,'Blog')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-27T15:45:49.380958" elapsed="1.280057"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-03-27T15:45:51.713537" level="INFO">Current page contains text 'Culture &amp; Travel Blog'.</msg>
+<arg>Culture &amp; Travel Blog</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-03-27T15:45:50.662016" elapsed="1.051521"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-03-27T15:45:51.714440" elapsed="3.067713"/>
+</kw>
+<status status="PASS" start="2026-03-27T15:45:41.021863" elapsed="13.762296"/>
+</test>
+<status status="PASS" start="2026-03-27T15:45:40.688882" elapsed="14.099283"/>
+</suite>
+<suite id="s1-s2" name="ExplorePage" source="C:\Users\USER\Desktop\culture-compass\culture-compass\tests\ExplorePage.robot">
+<test id="s1-s2-t1" name="robotframework_testing_selenium" line="10">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-03-27T15:45:54.808137" level="INFO">Opening browser 'chrome' to base url 'https://culturecompass.co/'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-03-27T15:45:54.808137" elapsed="3.005997"/>
+</kw>
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>${SELSPEED}</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2026-03-27T15:45:57.815117" elapsed="0.001007"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-03-27T15:45:57.816124" elapsed="1.722379"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//a[contains(.,'Countries')]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-27T15:45:59.538503" elapsed="2.317336"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-03-27T15:46:01.855839" level="INFO">Clicking element 'xpath=//a[contains(.,'Countries')]'.</msg>
+<arg>xpath=//a[contains(.,'Countries')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-27T15:46:01.855839" elapsed="1.176862"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//*[@id='exploreGrid']</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-27T15:46:03.036367" elapsed="1.063193"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-03-27T15:46:04.103575" level="INFO">Clicking element 'xpath=//*[@id='exploreGrid']/div[1]'.</msg>
+<arg>xpath=//*[@id='exploreGrid']/div[1]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-27T15:46:04.101620" elapsed="1.203856"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//button[contains(@onclick,'closeCardModal')]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-27T15:46:05.305476" elapsed="1.077051"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-03-27T15:46:06.384052" level="INFO">Clicking element 'xpath=//button[contains(@onclick,'closeCardModal')]'.</msg>
+<arg>xpath=//button[contains(@onclick,'closeCardModal')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-27T15:46:06.383298" elapsed="1.127193"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-03-27T15:46:07.511477" elapsed="3.009668"/>
+</kw>
+<status status="PASS" start="2026-03-27T15:45:54.806144" elapsed="15.715001"/>
+</test>
+<status status="PASS" start="2026-03-27T15:45:54.792200" elapsed="15.728945"/>
+</suite>
+<suite id="s1-s3" name="Homepage" source="C:\Users\USER\Desktop\culture-compass\culture-compass\tests\Homepage.robot">
+<test id="s1-s3-t1" name="robotframework_testing_selenium" line="10">
+<kw name="Run Keywords" owner="BuiltIn" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-03-27T15:46:10.552237" level="INFO">Opening browser 'chrome' to base url 'https://culturecompass.co/'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-03-27T15:46:10.536539" elapsed="4.742516"/>
+</kw>
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>${SELSPEED}</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2026-03-27T15:46:15.279055" elapsed="0.000000"/>
+</kw>
+<arg>Open Browser</arg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>AND</arg>
+<arg>Set Selenium Speed</arg>
+<arg>${SELSPEED}</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<status status="PASS" start="2026-03-27T15:46:10.536539" elapsed="4.742516"/>
+</kw>
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<msg time="2026-03-27T15:46:15.832077" level="INFO">Page title is 'Culture Compass - Collect the World'.</msg>
+<arg>Culture Compass - Collect the World</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="PASS" start="2026-03-27T15:46:15.279055" elapsed="0.553022"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-03-27T15:46:15.832077" elapsed="3.164649"/>
+</kw>
+<status status="PASS" start="2026-03-27T15:46:10.536539" elapsed="8.460187"/>
+</test>
+<status status="PASS" start="2026-03-27T15:46:10.521145" elapsed="8.475581"/>
+</suite>
+<suite id="s1-s4" name="WaitListSignupTest" source="C:\Users\USER\Desktop\culture-compass\culture-compass\tests\WaitListSignupTest.robot">
+<test id="s1-s4-t1" name="robotframework_testing_selenium" line="10">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-03-27T15:46:19.021264" level="INFO">Opening browser 'chrome' to base url 'https://culturecompass.co/'.</msg>
+<arg>https://culturecompass.co/</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-03-27T15:46:19.021264" elapsed="4.804460"/>
+</kw>
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>0.5s</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2026-03-27T15:46:23.825724" elapsed="0.000000"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-03-27T15:46:23.825724" elapsed="0.592466"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//a[contains(.,'Blog')]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-27T15:46:24.419197" elapsed="2.367020"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-03-27T15:46:26.789230" level="INFO">Clicking element 'xpath=//a[contains(.,'Blog')]'.</msg>
+<arg>xpath=//a[contains(.,'Blog')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-27T15:46:26.788218" elapsed="1.275299"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-03-27T15:46:29.138321" level="INFO">Current page contains text 'Culture &amp; Travel Blog'.</msg>
+<arg>Culture &amp; Travel Blog</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-03-27T15:46:28.063517" elapsed="1.076035"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-27T15:46:29.142182" level="INFO">Typing text 'Rita' into text field 'id=waitlistName'.</msg>
+<arg>id=waitlistName</arg>
+<arg>Rita</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-27T15:46:29.140918" elapsed="1.740531"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-27T15:46:30.881449" level="INFO">Typing text 'rnnnena53@gmail.com' into text field 'id=waitlistEmail'.</msg>
+<arg>id=waitlistEmail</arg>
+<arg>rnnnena53@gmail.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-27T15:46:30.881449" elapsed="1.762083"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-03-27T15:46:32.643532" level="INFO">Clicking element 'xpath=//button[@type='submit']'.</msg>
+<arg>xpath=//button[@type='submit']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-27T15:46:32.643532" elapsed="1.167785"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-03-27T15:46:33.811317" elapsed="3.040621"/>
+</kw>
+<status status="PASS" start="2026-03-27T15:46:19.019225" elapsed="17.832713"/>
+</test>
+<status status="PASS" start="2026-03-27T15:46:18.996726" elapsed="17.855212"/>
+</suite>
+<status status="PASS" start="2026-03-27T15:45:40.617870" elapsed="56.234068"/>
+</suite>
+<statistics>
+<total>
+<stat pass="4" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="4" fail="0" skip="0">Tests</stat>
+<stat name="Blog" id="s1-s1" pass="1" fail="0" skip="0">Tests.Blog</stat>
+<stat name="ExplorePage" id="s1-s2" pass="1" fail="0" skip="0">Tests.ExplorePage</stat>
+<stat name="Homepage" id="s1-s3" pass="1" fail="0" skip="0">Tests.Homepage</stat>
+<stat name="WaitListSignupTest" id="s1-s4" pass="1" fail="0" skip="0">Tests.WaitListSignupTest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
