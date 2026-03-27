@@ -1,0 +1,9 @@
+title = "gitleaks config"
+
+[[allowlists]]
+description = "Allow false positives for CSS display values in app.js"
+paths = ['''app\.js''']
+regexes = [
+  '''style\.display\s*=\s*'block' ''',
+  '''style\.display\s*=\s*'none' '''
+]
