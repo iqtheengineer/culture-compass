@@ -330,6 +330,181 @@ Download Cards → Travel Without Internet → Access Saved Information → Cont
 
 ---
 
+### 🤖 Automated Frontend Testing
+
+This section documents the setup, execution, and automation of frontend tests for the **Culture Compass** website (`culturecompass.co`).
+
+### Overview
+
+- [ ] Verify important website flows automatically
+- [ ] Reduce manual checking after updates
+- [ ] Run tests on push and on a daily schedule
+- [ ] Alert through GitHub notifications when a workflow fails
+
+### Tools & Technologies Used
+
+- [ ] **Katalon Recorder 7.1.0** — used initially to record browser test flows
+- [ ] **Robot Framework 7.4.2** — automation framework used to execute the tests
+- [ ] **SeleniumLibrary 6.8.0** — library for browser automation with Robot Framework
+- [ ] **Python 3.11.9** — runtime used to run Robot Framework
+- [ ] **WebDriver Manager** — helps manage browser driver setup
+- [ ] **GitHub Actions** — used for CI/CD and scheduled test execution
+
+## Installation & Setup
+
+# Prerequisites
+
+- [ ] Python 3.11+ installed
+- [ ] Google Chrome installed
+- [ ] Katalon Recorder Chrome extension installed
+- [ ] Access to the Culture Compass GitHub repository
+- [ ] Robot Framework dependencies installed
+
+#### Install Required Packages
+
+```bash
+pip install robotframework
+pip install robotframework-seleniumlibrary
+pip install webdriver-manager
+```
+
+### Test Structure
+
+All automated frontend test files are located in the `tests/` folder:
+
+- [ ] **Homepage.robot** — validates homepage load and title
+- [ ] **Blog.robot** — validates navigation to the Blog page
+- [ ] **ExplorePage.robot** — validates the Explore/Countries page flow and modal interaction
+- [ ] **WaitListSignupTest.robot** — validates the waitlist signup flow
+
+### What We Implemented
+
+- [ ] Fixed Robot Framework test files
+- [ ] Updated outdated locators
+- [ ] Simplified unstable test flows
+- [ ] Verified all current test files are passing
+- [ ] Added the tests into the CI/CD workflow
+- [ ] Added a scheduled GitHub Actions run
+- [ ] Enabled GitHub failure notifications
+- [ ] Handled the Gitleaks false positive safely
+
+### How to Run Tests
+
+#### Run All Tests
+
+```bash
+robot tests/
+```
+
+#### Run a Single Test File
+
+```bash
+robot tests/Homepage.robot
+robot tests/Blog.robot
+robot tests/ExplorePage.robot
+robot tests/WaitListSignupTest.robot
+```
+
+#### View Test Results
+
+- [x] `report.html`
+- [x] `log.html`
+- [x] `output.xml`
+
+These can be opened in a browser to review detailed execution results.
+
+### CI/CD Integration
+
+The automated tests were added to the GitHub Actions pipeline.
+
+#### Workflow File Location
+
+```bash
+.github/workflows/cicd.yaml
+```
+
+#### Workflow Triggers
+
+- [ ] Runs on push to `main`
+- [ ] Runs on pull request to `main`
+- [ ] Runs on a daily schedule
+- [ ] Can be triggered manually with `workflow_dispatch`
+
+#### Schedule
+
+```yaml
+schedule:
+  - cron: "0 8 * * *"
+```
+
+- [x] Runs once daily at **08:00 UTC**
+
+### Notifications
+
+Failure notifications are handled through **GitHub Actions notifications**.
+
+#### Current Notification Setup
+
+- [ ] GitHub notifications enabled
+- [ ] Email notifications enabled
+- [ ] Notifications limited to failed workflows only
+
+> **Note:** GitHub notifications are user-based. If another team member also wants alerts, they need to enable workflow notifications on their own GitHub account.
+
+### Current Test Coverage
+
+#### Homepage
+
+- [ ] Homepage opens successfully
+- [ ] Page title validation
+
+#### Blog Page
+
+- [ ] Blog navigation works
+- [ ] Blog page content is visible
+
+#### Explore Page
+
+- [ ] Navigation to Countries/Explore section
+- [ ] Grid/card interaction
+- [ ] Modal open and close flow
+
+#### Waitlist Flow
+
+- [ ] Navigation to Blog page
+- [ ] Waitlist form input
+- [ ] Waitlist submission flow
+
+### Security Scan Note
+
+- [ ] Pipeline reported a Gitleaks false positive in `app.js`
+- [ ] Reviewed and confirmed it was not a real secret
+- [ ] Added `.gitleaks.toml` to handle the false positive safely
+
+### Important Notes
+
+- [ ] The tests currently cover the flows that were implemented and fixed
+- [ ] Issues outside the tested paths may not be detected yet
+- [ ] More test files can be added later for broader coverage
+- [ ] Result files like `log.html`, `report.html`, `output.xml`, and screenshots should usually not be committed unless specifically needed
+
+### Best Practices
+
+- [ ] Run tests locally before pushing major changes
+- [ ] Add or update tests whenever a new feature or page is introduced
+- [ ] Keep locators simple and reliable
+- [ ] Prefer focused test flows over large unstable scripts
+- [ ] Review GitHub Actions runs regularly
+- [ ] Expand test coverage over time
+
+### Final Summary
+
+- [ ] Automated tests are passing
+- [ ] CI/CD integration is active
+- [ ] Scheduled runs are configured
+- [ ] Failure notifications are enabled
+- [ ] Core website flows are now monitored automatically
+
 ## 🤝 Contributing
 
 We welcome contributions from the community! Here's how you can help:
