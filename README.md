@@ -330,7 +330,7 @@ Download Cards → Travel Without Internet → Access Saved Information → Cont
 
 ---
 
-### 🤖 Automated Frontend Testing
+# 🤖 Automated Frontend Testing
 
 This section documents the setup, execution, and automation of frontend tests for the **Culture Compass** website (`culturecompass.co`).
 
